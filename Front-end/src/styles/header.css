@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+    
+    header .header-body {
+        justify-content: space-between;
+    }
+
+    header nav#desktop-nav {
+        display: none;
+    }
+}
