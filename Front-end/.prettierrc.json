@@ -1,0 +1,32 @@
+{
+  "semi": true,
+  "singleQuote": false,
+  "printWidth": 80,
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "^react$",
+    "^react-dom/client$",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "<BUILTIN_MODULES>",
+    "",
+    "<TYPES>",
+    "<TYPES>^[.]",
+    "",
+    "^(@/config)(/.*)$",
+    "",
+    "^(@/lib)(/.*)$",
+    "",
+    "^(@/components)(/.*)$",
+    "",
+    "^[.]",
+    "",
+    "^(?!.*[.]css$)[./].*$",
+    "",
+    ".css$"
+  ]
+}
