@@ -46,19 +46,19 @@ class ProductController extends Controller
             return response()->json([
                 'status'=>true,
                 'message'=>'product Created successfuly',
-                'product'=>$product    
+                'product'=>$product
             ],201);
         }else{
             $product=Product::create([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
-                
+
             ]);
             return response()->json([
                 'status'=>true,
                 'message'=>'product Created successfuly',
-                'product'=>$product    
+                'product'=>$product
             ],201);
 
         }
@@ -91,16 +91,17 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         // $product = Product::findOrFail($id);
+        $product = Product::find($id);
 
         Storage::delete('public/' . $product->image);
 
         $product->delete();
         return response()->json([
             'status'=>true,
-            'message'=>'product Delete successfuly',   
+            'message'=>'product Delete successfuly',
         ] );
     }
 }
