@@ -22,15 +22,17 @@ cd Project-2/Back-end/
 composer install
 ```
 
-5. create .env file, then copy everything from .env.example and paste it in .env file
+5. create .env file, then copy everything from .env.example and paste it in .env file.
 
-6. create application key
+6. you have to delete old database config in .env file and put the config that is shared on discord.
+
+8. create application key.
    
 ```sh
 php artisan key:generate
 ```
 
-7. Run local development.
+9. Run local development.
 
 ```sh
 php artisan serve
@@ -40,7 +42,7 @@ php artisan serve
 - I have shared with you postman collection that contains every Api endpoint.
 - you don't have to touch anything, just see the examples.
 - when you hit the login endpoint you have to provide the admin email and his password, and it will provide you the Auth token.
-- you save this token in local storage or sessions, cookies, etc.
+- you have to save this token in local storage or sessions, cookies, etc.
 - after that when you hit the endpoints that need auth, you have to provide that token in the axios header, and it should be as follows: Bearer ${the token}.
 - finally you have to do the same with logout endpoint to delete that token.
 - last but not least, please don't touch register endpoint and don't do UI for it.
