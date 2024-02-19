@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
-    
+
     header .header-body {
         justify-content: space-between;
     }
@@ -7,4 +7,20 @@
     header nav#desktop-nav {
         display: none;
     }
+}
+
+.contact-link {
+    text-align: center;
+    margin-top: 15px;
+    border-radius: var(--radius);
+    border: 1px solid #4883FB;
+    color: #4883FB;
+    font-weight: bold;
+    padding: 10px 28px;
+    transition: all .4s ease-out;
+}
+
+.contact-link:hover {
+    color: #fff;
+    background-color: #4883FB;
 }
