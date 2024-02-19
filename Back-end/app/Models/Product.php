@@ -14,5 +14,18 @@ class Product extends Model
         'price',
         'description',
         'image',
+        'number_of_rooms',
+        'number_of_bathrooms',
+        'area',
+        'city_id'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }
