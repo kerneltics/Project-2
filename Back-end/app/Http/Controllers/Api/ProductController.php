@@ -67,9 +67,20 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        try {
+            $product = Product::find($id);
+            return response()->json([
+                'status'=>true,
+                'product'=>$product
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'=>false,
+                'message'=>$th->getMessage()
+            ],500);
+        }
     }
 
     /**
@@ -83,9 +94,36 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            if($request->has('image')){
+                $imageName =time().'.'.$request->image->extension();
+                Storage::disk('public')->put($imageName,file_get_contents($request->image));
+                $product = Product::find($id);
+                $product->update($request->all());
+                $product->image = $imageName;
+                $product->save();
+                return response()->json([
+                    'status'=>true,
+                    'message'=>'product updated successfuly',
+                    'product'=>$product
+                ],201);
+            }else{
+                $product = Product::find($id);
+                $product->update($request->all());
+                return response()->json([
+                    'status'=>true,
+                    'message'=>'product updated successfuly',
+                    'product'=>$product
+                ],201);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'=>false,
+                'message'=>$th->getMessage()
+            ],500);
+        }
     }
 
     /**
