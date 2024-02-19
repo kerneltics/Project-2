@@ -31,14 +31,14 @@ export const Header = () => {
                 </SheetContent>
             </Sheet>
             {/* End Navbars Mobile */}
-            <nav id="desktop-nav" className="flex-1">
-                <ul className="flex gap-10 justify-center">
+            <nav id="desktop-nav" className="flex flex-1">
+                <ul className="flex gap-10 justify-center m-auto">
                     <li><Link to=''>الرئيسية</Link></li>
                     <li><Link to=''>من نحن</Link></li>
                     <li><Link to=''>خدماتنا</Link></li>
                     <li><Link to=''>افضل العقارات</Link></li>
-                    <li><Link to=''>تواصل معنا</Link></li>
                 </ul>
+                    <Link to=''>تواصل معنا</Link>
             </nav>
                 </div>
             </div>
