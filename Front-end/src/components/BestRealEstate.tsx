@@ -1,20 +1,49 @@
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card"
 import { buttonVariants } from '@/components/ui/button'
 
-
-import { MapPin } from 'lucide-react';
-import { BedDouble } from 'lucide-react';
-import { Bath } from 'lucide-react';
-import { Ruler } from 'lucide-react';
-
 import { Link } from 'react-router-dom'
+import { Card } from "./Card";
 
 
 const BestRealEstate = () => {
+
   return (
-    <>
-      <Card className=" rounded-[var(--radius)] shadow-md max-w-[398px] max-h-[527px] m-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+    <Card img="public/images/homeImg.png" title="شقة سكنية" address="حي العزيزية, المدينة">
+        <Link to="/" className={cn(buttonVariants())}>
+          تفاصيل أكثر
+        </Link>
+        <p className="font-semibold md:text-sm">
+          500,000,000<span className="px-1 text-xs text-gray-500">SAR</span>
+        </p>
+    </Card>
+
+    <Card img="public/images/homeImg.png" title="شقة سكنية" address="حي العزيزة,المدينة">
+        <Link to="/" className={cn(buttonVariants())}>
+          تفاصيل أكثر
+        </Link>
+        <p className="font-semibold md:text-sm">
+          500,000,000<span className="px-1 text-xs text-gray-500">SAR</span>
+        </p>
+    </Card>
+
+    <Card img="public/images/homeImg.png" title="شقة سكنية" address="حي العزيزة,المدينة">
+        <Link to="/" className={cn(buttonVariants())}>
+          تفاصيل أكثر
+        </Link>
+        <p className="font-semibold md:text-sm">
+          500,000,000<span className="px-1 text-xs text-gray-500">SAR</span>
+        </p>
+    </Card>
+    </div>
+  )
+}
+
+
+
+
+{/* <Card className=" rounded-[var(--radius)] shadow-md max-w-[398px] max-h-[527px] m-2">
           <img
           src="public/images/homeImg.png"
           alt="Image"
@@ -40,9 +69,9 @@ const BestRealEstate = () => {
           <p className="font-semibold md:text-sm">500,000,000<span className="text-gray-500 text-xs px-1">SAR</span></p>
       </div>
       </Card>
-      
-    </>
-  )
-}
+       */}
+
+
+
 
 export default BestRealEstate
