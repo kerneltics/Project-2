@@ -43,7 +43,7 @@ function Login() {
   });
 
   return (
-    <div className="mx-auto mt-10 w-1/2 rounded-3xl bg-white p-8 px-10">
+    <div className="mx-auto mt-10 w-full rounded-3xl bg-white p-8 px-10 md:w-11/12 lg:w-1/2">
       <div>
         <h2 className="mb-4 text-right text-3xl font-bold">
           الدخول للوحة التحكم
