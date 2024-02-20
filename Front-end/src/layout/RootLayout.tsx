@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import { Container } from "@/components/Container";
+import { Footer } from "@/components/Footer";
 
 export const RootLayout = () => {
   return (
@@ -9,7 +10,7 @@ export const RootLayout = () => {
       <main className="flex-1">
         <Outlet />
       </main>
-      {/* Add footer component below */}
+      <Footer />
     </Container>
   );
 };
