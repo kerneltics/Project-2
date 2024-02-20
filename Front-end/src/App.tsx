@@ -1,7 +1,4 @@
 // import { Icons } from "@/config/icons";
-
-import { Header } from "@/components/Header";
-
 // import { Container } from "@/components/Container";
 // import { Heading } from "@/components/Heading";
 // import { Section } from "@/components/Section";
@@ -10,7 +7,6 @@ import { Header } from "@/components/Header";
 const App = () => {
   return (
     <>
-    <Header />
     </>
   );
 };
