@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route,  Routes } from "react-router-dom";
 
 import { AdminLayout } from "@/layout/AdminLayout";
 import { RootLayout } from "@/layout/RootLayout";
@@ -11,22 +11,20 @@ import { LoginPage } from "@/pages/LoginPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="listings" element={<ListingsPage />} />
-          <Route path=":listingId" element={<ListingDetailsPage />} />
-        </Route>
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="listings" element={<ListingsPage />} />
+        <Route path=":listingId" element={<ListingDetailsPage />} />
+      </Route>
 
-        <Route path="admin" element={<AdminLayout />}>
-          <Route index element={<AdminPage />} />
-        </Route>
-        <Route path="login" element={<AdminLayout />}>
-          <Route index element={<LoginPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <Route path="admin" element={<AdminLayout />}>
+        <Route index element={<AdminPage />} />
+      </Route>
+      <Route path="login" element={<AdminLayout />}>
+        <Route index element={<LoginPage />} />
+      </Route>
+    </Routes>
   );
 };
 
