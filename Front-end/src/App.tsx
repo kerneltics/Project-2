@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-// import { Icons } from "@/config/icons";
-// import { Container } from "@/components/Container";
-// import { Heading } from "@/components/Heading";
-// import { Section } from "@/components/Section";
-// import { SubHeading } from "@/components/SubHeading";
-
-const App = () => {
-  return (
-    <>
-    </>
-=======
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { AdminLayout } from "@/layout/AdminLayout";
@@ -39,7 +27,6 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
->>>>>>> 3aa9badb9b38a6b47c26f9a8800582c1c0e8f718
   );
 };
 
