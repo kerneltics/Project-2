@@ -11,6 +11,12 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.56)(react@18.2.0)
+  '@tanstack/react-query':
+    specifier: ^5.22.2
+    version: 5.22.2(react@18.2.0)
+  '@tanstack/react-query-devtools':
+    specifier: ^5.24.0
+    version: 5.24.0(@tanstack/react-query@5.22.2)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -1088,6 +1094,34 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@tanstack/query-core@5.22.2:
+    resolution: {integrity: sha512-z3PwKFUFACMUqe1eyesCIKg3Jv1mysSrYfrEW5ww5DCDUD4zlpTKBvUDaEjsfZzL3ULrFLDM9yVUxI/fega1Qg==}
+    dev: false
+
+  /@tanstack/query-devtools@5.24.0:
+    resolution: {integrity: sha512-pThim455t69zrZaQKa7IRkEIK8UBTS+gHVAdNfhO72Xh4rWpMc63ovRje5/n6iw63+d6QiJzVadsJVdPoodSeQ==}
+    dev: false
+
+  /@tanstack/react-query-devtools@5.24.0(@tanstack/react-query@5.22.2)(react@18.2.0):
+    resolution: {integrity: sha512-ae3TSg9hKSicLP6TZMj4hglLsLBaS8O3ex/mgHZNQ8yKCDLnVoLO1a9EqYWPzw2k+uaK5uMCKBAVbLVBLx93oA==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.22.2
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.24.0
+      '@tanstack/react-query': 5.22.2(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@tanstack/react-query@5.22.2(react@18.2.0):
+    resolution: {integrity: sha512-TaxJDRzJ8/NWRT4lY2jguKCrNI6MRN+67dELzPjNUlvqzTxGANlMp68l7aC7hG8Bd1uHNxHl7ihv7MT50i/43A==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-core': 5.22.2
+      react: 18.2.0
+    dev: false
 
   /@total-typescript/ts-reset@0.5.1:
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
@@ -2434,8 +2468,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+<<<<<<< HEAD
   /react-remove-scroll-bar@2.3.4(@types/react@18.2.56)(react@18.2.0):
     resolution: {integrity: sha512-63C4YQBUt0m6ALadE9XV56hV8BgJWDmmTPY758iIJjfQKt2nYwoUrPk0LXRXcB/yIj82T1/Ixfdpdk68LwIB0A==}
+=======
+  /react-remove-scroll-bar@2.3.5(@types/react@18.2.56)(react@18.2.0):
+    resolution: {integrity: sha512-3cqjOqg6s0XbOjWvmasmqHch+RLxIEk2r/70rzGXuz3iIGQsQheEQyqYCBb5EECoD01Vo2SIbDqW4paLeLTASw==}
+>>>>>>> 3aa9badb9b38a6b47c26f9a8800582c1c0e8f718
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -2462,7 +2501,11 @@ packages:
     dependencies:
       '@types/react': 18.2.56
       react: 18.2.0
+<<<<<<< HEAD
       react-remove-scroll-bar: 2.3.4(@types/react@18.2.56)(react@18.2.0)
+=======
+      react-remove-scroll-bar: 2.3.5(@types/react@18.2.56)(react@18.2.0)
+>>>>>>> 3aa9badb9b38a6b47c26f9a8800582c1c0e8f718
       react-style-singleton: 2.2.1(@types/react@18.2.56)(react@18.2.0)
       tslib: 2.6.2
       use-callback-ref: 1.3.1(@types/react@18.2.56)(react@18.2.0)
