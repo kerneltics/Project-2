@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button.tsx";
-import ErrorMessage from "@/components/ui/ErrorMessage.tsx";
+import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 
 const loginSchema = z.object({
   userName: z.string().min(1, "اسم المستخدم مطلوب"),
