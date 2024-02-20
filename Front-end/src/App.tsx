@@ -1,4 +1,4 @@
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { AdminLayout } from "@/layout/AdminLayout";
 import { RootLayout } from "@/layout/RootLayout";
