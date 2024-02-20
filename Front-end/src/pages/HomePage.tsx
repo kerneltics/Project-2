@@ -1,9 +1,12 @@
 import ContactUs from "@/components/ContactUs.tsx";
+import { Section } from "@/components/Section";
 
 export const HomePage = () => {
   return (
     <div>
-      <ContactUs />
+      <Section>
+        <ContactUs />
+      </Section>
     </div>
   );
 };
