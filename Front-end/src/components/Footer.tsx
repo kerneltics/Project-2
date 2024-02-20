@@ -3,7 +3,7 @@ import { Icons } from "@/config/icons";
 export const Footer = () => {
   return (
     <footer className="bg-secondary py-12 text-black">
-      <div className="container mx-auto flex flex-col justify-between text-right md:flex-row">
+      <div className=" mx-auto flex flex-col justify-between text-right md:flex-row">
         {/* First Section: Logo (Taking up more width) */}
         <div className="mb-6 flex w-full flex-col items-start px-4 md:w-2/5">
           <Icons.logo className="mb-2 w-16" />
