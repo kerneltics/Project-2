@@ -1,31 +1,30 @@
-import { Icons } from "@/config/icons";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import ContactUs from "@/components/ContactUs.tsx";
-import { Container } from "@/components/Container";
-import { Heading } from "@/components/Heading";
-import Login from "@/components/Login.tsx";
-import { Section } from "@/components/Section";
-import { SubHeading } from "@/components/SubHeading";
+import { AdminLayout } from "@/layout/AdminLayout";
+import { RootLayout } from "@/layout/RootLayout";
+
+import { AdminPage } from "@/pages/AdminPage";
+import { HomePage } from "@/pages/HomePage";
+import { ListingDetailsPage } from "@/pages/ListingDetailsPage";
+import { ListingsPage } from "@/pages/ListingsPage";
+import { LoginPage } from "@/pages/LoginPage";
 
 const App = () => {
   return (
-    <Container>
-      {/* ⛔ REMOVE CODE BELOW ⛔ */}
-      <Section>
-        <Icons.logo />
-      </Section>
-      <Section>
-        <Heading>
-          استثمر في مستقبلك مع أفضل عروض العقارات في السعودية والخليج!
-        </Heading>
-      </Section>
-      <Section>
-        <SubHeading>من نحن وماذا نقدم</SubHeading>
-      </Section>
-      {/* ⛔ REMOVE CODE ABOVE ⛔ */}
-      <ContactUs />
-      <Login />
-    </Container>
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="listings" element={<ListingsPage />} />
+        <Route path=":listingId" element={<ListingDetailsPage />} />
+      </Route>
+
+      <Route path="admin" element={<AdminLayout />}>
+        <Route index element={<AdminPage />} />
+      </Route>
+      <Route path="login" element={<AdminLayout />}>
+        <Route index element={<LoginPage />} />
+      </Route>
+    </Routes>
   );
 };
 
