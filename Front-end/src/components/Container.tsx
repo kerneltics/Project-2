@@ -6,7 +6,7 @@ export const Container = ({ children, className = "" }: ContainerProps) => {
   return (
     <div
       className={cn(
-        "max-w-[1440px] mx-auto min-h-screen w-full px-[100px] py-[20px] text-center",
+        "mx-auto flex min-h-screen w-full max-w-[1440px] flex-col px-4 pt-[20px] text-center md:px-[100px]",
         className,
       )}
     >
