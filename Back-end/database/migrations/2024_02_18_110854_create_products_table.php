@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('number_of_bathrooms');
             $table->decimal('area', 8, 2);
             $table->foreignId('city_id')->constrained('cities');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

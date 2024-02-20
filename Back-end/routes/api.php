@@ -30,3 +30,4 @@ Route::get('/product/{id}', ProductController::class.'@show');
 Route::put('/updateProduct/{id}', ProductController::class.'@update')->middleware('auth:sanctum');
 Route::post('/createProduct', ProductController::class.'@store')->middleware('auth:sanctum');
 Route::delete('/deleteProduct/{id}', ProductController::class.'@destroy')->middleware('auth:sanctum');
+    
