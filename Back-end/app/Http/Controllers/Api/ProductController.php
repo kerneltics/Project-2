@@ -14,11 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
+        $products = Product::all();
         return response()->json([
-            'status'=>true,
-            'products'=>$products
-        ],200);
+            'status' => true,
+            'products' => $products
+        ], 200);
     }
 
     /**
@@ -34,33 +34,60 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has('image')){
-            $imageName =time().'.'.$request->image->extension();
-            Storage::disk('public')->put($imageName,file_get_contents($request->image));
-            $product=Product::create([
+       
+        $this->validate($request,[
+            'name' => 'required',
+            'image' => 'image|nullable', 
+            'price' => 'required',
+            'description' => 'nullable',
+            'number_of_rooms' => 'numeric|nullable',
+            'number_of_bathrooms' => 'numeric|nullable',
+            'area' => 'numeric|required',
+            'city_id' => 'required',
+           ]);
+
+        if ($request->has('image')) {
+           
+                // Image handling
+                $imageName = time() . '.' . $request->image->extension();
+                Storage::disk('public')->put($imageName, file_get_contents($request->image));
+        
+                // Product creation (minimal change)
+                $product = Product::create([
+                    'name' => $request->input('name'),
+                    'price' => $request->input('price'),
+                    'description' => $request->input('description'),
+                    'image' => $imageName,
+                    'number_of_rooms' => $request->input('number_of_rooms'),
+                    'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+                    'area' => $request->input('area'),
+                    'city_id' => $request->input('city_id'),
+                ]);
+               
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Product created successfully',
+                    'product' => $product,
+                ], 201);
+            
+        } else {
+            // Create product without image (no significant change)
+            $product = Product::create([
                 'name' => $request->input('name'),
                 'price' => $request->input('price'),
                 'description' => $request->input('description'),
-                'image' => $imageName,
+                'number_of_rooms' => $request->input('number_of_rooms'),
+                'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+                'area' => $request->input('area'),
+                'city_id' => $request->input('city_id'),
             ]);
-            return response()->json([
-                'status'=>true,
-                'message'=>'product Created successfuly',
-                'product'=>$product
-            ],201);
-        }else{
-            $product=Product::create([
-            'name' => $request->input('name'),
-            'price' => $request->input('price'),
-            'description' => $request->input('description'),
 
-            ]);
+        
             return response()->json([
-                'status'=>true,
-                'message'=>'product Created successfuly',
-                'product'=>$product
-            ],201);
-
+                'status' => true,
+                'message' => 'Product created successfully',
+                'product' => $product,
+            ], 201);
         }
     }
 
@@ -72,14 +99,14 @@ class ProductController extends Controller
         try {
             $product = Product::find($id);
             return response()->json([
-                'status'=>true,
-                'product'=>$product
-            ],200);
+                'status' => true,
+                'product' => $product
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
-                'status'=>false,
-                'message'=>$th->getMessage()
-            ],500);
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -94,36 +121,57 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Product $product)
     {
-        try {
-            if($request->has('image')){
-                $imageName =time().'.'.$request->image->extension();
-                Storage::disk('public')->put($imageName,file_get_contents($request->image));
-                $product = Product::find($id);
-                $product->update($request->all());
-                $product->image = $imageName;
-                $product->save();
-                return response()->json([
-                    'status'=>true,
-                    'message'=>'product updated successfuly',
-                    'product'=>$product
-                ],201);
-            }else{
-                $product = Product::find($id);
-                $product->update($request->all());
-                return response()->json([
-                    'status'=>true,
-                    'message'=>'product updated successfuly',
-                    'product'=>$product
-                ],201);
-            }
-        } catch (\Throwable $th) {
+        $this->validate($request,[
+            'name' => 'required',
+            'image' => 'image|nullable', 
+            'price' => 'required',
+            'description' => 'nullable',
+            'number_of_rooms' => 'numeric|nullable',
+            'number_of_bathrooms' => 'numeric|nullable',
+            'area' => 'numeric|required',
+            'city_id' => 'required',
+           ]);
+
+        $product=Product::findOrFail($product->id);
+        if($request->has('image')){
+            $imageName =time().'.'.$request->image->extension();
+            Storage::disk('public')->put($imageName,file_get_contents($request->image));
+            $product->update([
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'description' => $request->input('description'),
+                'image' => $imageName,
+                'number_of_rooms' => $request->input('number_of_rooms'),
+                'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+                'area' => $request->input('area'),
+                'city_id' => $request->input('city_id')
+            ]);
             return response()->json([
-                'status'=>false,
-                'message'=>$th->getMessage()
-            ],500);
+                'status'=>true,
+                'message'=>'product Created successfuly',
+                'product'=>$product    
+            ],201);
+        }else{
+            $product->update([
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'number_of_rooms' => $request->input('number_of_rooms'),
+            'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+            'area' => $request->input('area'),
+            'city_id' => $request->input('city_id')
+                
+            ]);
+
+            return response()->json([
+                'status'=>true,
+                'message'=>'product Updated successfuly',
+                'product'=>$product    
+            ],201);
         }
+
     }
 
     /**
@@ -138,8 +186,8 @@ class ProductController extends Controller
 
         $product->delete();
         return response()->json([
-            'status'=>true,
-            'message'=>'product Delete successfuly',
-        ] );
+            'status' => true,
+            'message' => 'product Delete successfuly',
+        ]);
     }
 }
