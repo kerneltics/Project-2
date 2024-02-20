@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button.tsx";
-import ErrorMessage from "@/components/ui/ErrorMessage.tsx";
+import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 
 // A Zod schema to validate the form
 const formSchema = z.object({
