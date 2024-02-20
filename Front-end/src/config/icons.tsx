@@ -102,6 +102,49 @@ export const Icons = {
       </defs>
     </svg>
   ),
+  whiteLogo: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="69"
+      height="82"
+      viewBox="0 0 69 82"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-[70px]", className)}
+      {...props}
+    >
+      <g clipPath="url(#clip0_188_404)">
+        <path
+          d="M63.745 82H69V46.0374L68.9048 45.9642L52.3698 33.0228L47.1147 28.9106V82.0016H52.3698M52.3698 76.9382V39.6569L63.745 48.561V76.9382H52.3698Z"
+          fill="#fff"
+        />
+        <path
+          d="M40.7318 0V82H0V54.0829L5.25503 49.9707L22.3154 36.6179V43.2504L5.25503 56.6049V76.7951H35.4768V10.7463L22.3253 21.0423V31.7138L17.0702 35.826V18.5203L22.3253 14.4081L35.4768 4.11382L40.7318 0Z"
+          fill="#fff"
+        />
+        <path
+          d="M25.0259 58.6569H21.5488V62.1008H25.0259V58.6569Z"
+          fill="#FBB040"
+        />
+        <path
+          d="M19.1814 58.6569H15.7043V62.1008H19.1814V58.6569Z"
+          fill="#FBB040"
+        />
+        <path
+          d="M25.0259 64.2537H21.5488V67.6976H25.0259V64.2537Z"
+          fill="#FBB040"
+        />
+        <path
+          d="M19.1814 64.2537H15.7043V67.6976H19.1814V64.2537Z"
+          fill="#FBB040"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_188_404">
+          <rect width="69" height="82" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  ),
   totalSoldRealEstate: ({ className = "", ...props }: LucideProps) => (
     <svg
       version="1.0"
