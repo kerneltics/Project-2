@@ -7,16 +7,14 @@ import { Container } from "@/components/Container";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const ROUTES = () => {
-    return RoutePath.map((e, i) => {
-                return(
-                    <li key={i}>
-                        <Link to={e.path}>{e.label}</Link>
-                    </li>
-                )
-            })
-        
-    
-}
+  return RoutePath.map((e, i) => {
+    return (
+      <li key={i}>
+        <Link to={e.path}>{e.label}</Link>
+      </li>
+    );
+  });
+};
 const DesktopNavbar = () => (
   <nav className="hidden flex-1 items-center justify-between md:flex">
     <Link to="/">
