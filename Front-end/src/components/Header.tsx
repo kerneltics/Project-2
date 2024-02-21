@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const Header = () => {
   return (
-    <header className="container">
+    <header className="container bg-white">
       <DesktopNavbar />
       <MobileNavbar />
     </header>
