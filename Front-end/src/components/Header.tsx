@@ -1,36 +1,42 @@
 import { Link } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
-import { RoutePath } from "@/config/RoutePath";
+import { ROUTES } from "@/config/routes";
 
-import { Container } from "@/components/Container";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-const ROUTES = () => {
-  return RoutePath.map((e, i) => {
-    return (
-      <li key={i}>
-        <Link to={e.path}>{e.label}</Link>
-      </li>
-    );
-  });
+export const Header = () => {
+  return (
+    <header className="container">
+      <DesktopNavbar />
+      <MobileNavbar />
+    </header>
+  );
 };
+
 const DesktopNavbar = () => (
   <nav className="hidden flex-1 items-center justify-between md:flex">
     <Link to="/">
       <Icons.textLogo />
     </Link>
     <ul className="flex justify-center gap-10 font-bold">
-      <ROUTES />
+      {ROUTES.map(({ path, label }) => {
+        return (
+          <li key={label}>
+            <Link to={path}>{label}</Link>
+          </li>
+        );
+      })}
     </ul>
     <Link
-      className="duration-[400ms] rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
+      className="duration-400 rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
       to=""
     >
       تواصل معنا
     </Link>
   </nav>
 );
+
 const MobileNavbar = () => (
   <div className="flex w-full items-center justify-between md:hidden">
     <Link to="/">
@@ -56,7 +62,13 @@ const MobileNavbar = () => (
       <SheetContent className="w-[100%] pt-10" side={"top"}>
         <nav className="space-y-6">
           <ul className="flex flex-col gap-4 font-bold">
-            <ROUTES />
+            {ROUTES.map(({ path, label }) => {
+              return (
+                <li key={label}>
+                  <Link to={path}>{label}</Link>
+                </li>
+              );
+            })}
           </ul>
           <div>
             <Link
@@ -71,13 +83,3 @@ const MobileNavbar = () => (
     </Sheet>
   </div>
 );
-export const Header = () => {
-  return (
-    <header>
-      <Container>
-        <DesktopNavbar />
-        <MobileNavbar />
-      </Container>
-    </header>
-  );
-};
