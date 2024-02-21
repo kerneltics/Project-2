@@ -17,6 +17,7 @@ class Product extends Model
         'number_of_rooms',
         'number_of_bathrooms',
         'area',
+        'user_id',
         'city_id'
     ];
     public function user()

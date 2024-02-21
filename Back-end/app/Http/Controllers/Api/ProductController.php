@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -47,7 +48,7 @@ class ProductController extends Controller
             ]);
 
             if ($request->has('image')) {
-
+             
                     // Image handling
                     $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
 
@@ -60,6 +61,7 @@ class ProductController extends Controller
                         'number_of_rooms' => $request->input('number_of_rooms'),
                         'number_of_bathrooms' => $request->input('number_of_bathrooms'),
                         'area' => $request->input('area'),
+                        'user_id' => auth()->user()->id,
                         'city_id' => $request->input('city_id'),
                     ]);
 
@@ -78,6 +80,7 @@ class ProductController extends Controller
                     'number_of_rooms' => $request->input('number_of_rooms'),
                     'number_of_bathrooms' => $request->input('number_of_bathrooms'),
                     'area' => $request->input('area'),
+                    'user_id' => auth()->user()->id,
                     'city_id' => $request->input('city_id'),
                 ]);
 
