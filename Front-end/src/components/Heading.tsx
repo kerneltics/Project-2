@@ -8,7 +8,7 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadElement> {
 
 export const Heading = ({ className = "", ...props }: HeadingProps) => (
   <h1
-    className={cn("mx-auto max-w-[24ch] text-5xl font-bold", className)}
+    className={cn("mx-auto max-w-[30ch] text-5xl font-bold", className)}
     {...props}
   />
 );
