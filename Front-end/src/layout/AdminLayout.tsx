@@ -2,17 +2,16 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 
-import { Container } from "@/components/Container";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 export const AdminLayout = () => {
   return (
-    <Container>
+    <div className="container">
       <Header />
       <main className="flex-1">
         <Outlet />
       </main>
-    </Container>
+    </div>
   );
 };
 

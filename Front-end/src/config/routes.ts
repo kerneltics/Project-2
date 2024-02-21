@@ -1,4 +1,4 @@
-export const RoutePath = [
+export const ROUTES = [
   {
     label: "الرئيسية",
     path: "/",
@@ -13,6 +13,6 @@ export const RoutePath = [
   },
   {
     label: "أفضل العقارات",
-    path: "/best-real-estate"
+    path: "/best-real-estate",
   },
 ] as const;
