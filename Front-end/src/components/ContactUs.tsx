@@ -33,7 +33,7 @@ const FormPicture = () => {
 // The form section on the left
 const FormSection = () => {
   return (
-    <section className="w-full lg:w-1/2">
+    <section className="flex w-full items-center justify-center lg:w-1/2">
       <Form />
     </section>
   );
