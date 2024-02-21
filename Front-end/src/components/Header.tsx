@@ -6,19 +6,24 @@ import { RoutePath } from "@/config/RoutePath";
 import { Container } from "@/components/Container";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+const ROUTES = () => {
+    return RoutePath.map((e, i) => {
+                return(
+                    <li key={i}>
+                        <Link to={e.path}>{e.label}</Link>
+                    </li>
+                )
+            })
+        
+    
+}
 const DesktopNavbar = () => (
   <nav className="hidden flex-1 items-center justify-between md:flex">
     <Link to="/">
       <Icons.textLogo />
     </Link>
     <ul className="flex justify-center gap-10 font-bold">
-      {RoutePath.map((li, i) => {
-        return (
-          <li key={i}>
-            <Link to={li.path}>{li.label}</Link>
-          </li>
-        );
-      })}
+      <ROUTES />
     </ul>
     <Link
       className="duration-[400ms] rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
@@ -53,13 +58,7 @@ const MobileNavbar = () => (
       <SheetContent className="w-[100%] pt-10" side={"top"}>
         <nav className="space-y-6">
           <ul className="flex flex-col gap-4 font-bold">
-            {RoutePath.map((li, i) => {
-              return (
-                <li key={i}>
-                  <Link to={li.path}>{li.label}</Link>
-                </li>
-              );
-            })}
+            <ROUTES />
           </ul>
           <div>
             <Link
