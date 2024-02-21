@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -17,7 +18,25 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $products = Product::all();
+            $products = Product::with('city')->paginate(6);
+
+            return response()->json([
+                'status' => true,
+                'products' => $products
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function bestProducts(){
+        try {
+            // Get the last 3 products created
+            $products = Product::with('city')->latest()->take(3)->get();
+
             return response()->json([
                 'status' => true,
                 'products' => $products
@@ -48,7 +67,7 @@ class ProductController extends Controller
             ]);
 
             if ($request->has('image')) {
-             
+
                     // Image handling
                     $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
 
@@ -104,7 +123,7 @@ class ProductController extends Controller
     public function show($id)
     {
         try {
-            $product = Product::find($id);
+            $product = Product::with('city')->find($id);
             return response()->json([
                 'status' => true,
                 'product' => $product
@@ -143,7 +162,13 @@ class ProductController extends Controller
             ]);
 
             $product=Product::findOrFail($id);
-            if($request->has('image')){
+            if ($request->user()->id !== $product->user_id) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Unauthorized'
+                ], 401);
+            }
+            if($request->hasFile('image')){
                 $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
 
                 $product->update([
@@ -193,7 +218,7 @@ class ProductController extends Controller
     {
         try {
             $product = Product::find($id);
-            if ($product) {
+            if ($product && $product->user_id == auth()->user()->id) {
                 Storage::delete('public/' . $product->image);
 
                 $product->delete();
