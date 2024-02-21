@@ -7,7 +7,8 @@ import { SubHeading } from "@/components/SubHeading";
 
 export const HeroSection = () => {
   return (
-    <div className="bg-hero h-[100dvh] bg-cover bg-bottom bg-no-repeat">
+    <div className="h-[960px]">
+      <div className="bg-hero absolute inset-0 top-[71px] -z-10 h-[960px] bg-cover bg-bottom md:top-28" />
       <Heading className="pt-[30px] text-center text-[16px] md:pt-[40px] md:text-[40px]">
         استثمر في مستقبلك مع أفضل عروض العقارات في السعودية والخليج!
       </Heading>
