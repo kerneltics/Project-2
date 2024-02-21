@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 
 export const RootLayout = () => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <Container>
@@ -14,6 +14,6 @@ export const RootLayout = () => {
         </Container>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
