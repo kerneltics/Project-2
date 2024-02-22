@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         try {
             $products = Product::with('city')->paginate(6);
-            if(!$products) {
+            if($products->isEmpty()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'No products found',
@@ -42,7 +42,7 @@ class ProductController extends Controller
             // Get the last 3 products created
             $products = Product::with('city')->latest()->take(3)->get();
 
-            if(!$products) {
+            if($products->isEmpty()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'No products found',
