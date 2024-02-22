@@ -54,7 +54,7 @@ class TestController extends Controller
                 'number_of_rooms' => $request->input('number_of_rooms'),
                 'number_of_bathrooms' => $request->input('number_of_bathrooms'),
                 'area' => $request->input('area'),
-                // 'user_id' => auth()->user()->id,
+                'user_id' => $request->input('user_id'),
                 'city_id' => $request->input('city_id'),
             ]);
             $product->save();
@@ -66,10 +66,17 @@ class TestController extends Controller
                 $request['product_id'] = $product->id;
                 $request['image'] = $imageName;
                 $file->move(\public_path("/images"), $imageName);
-                Image::create($request->all());
+                Image::create([
+                    'product_id' => $request->input('product_id'),
+                    'image' => $request->input('image'),
+                ]);
             }
         }
-        return redirect("/");
+        return response()->json([
+            'status' => true,
+            'message' => 'Product created successfully',
+            'product' => $product,
+        ], 201);
     }
 
     /**
@@ -106,7 +113,7 @@ class TestController extends Controller
             'city_id' => 'required',
         ]);
         $product = Product::findOrFail($id);
-        
+
         if ($request->hasFile("cover")) {
             if (File::exists("cover/" . $product->cover)) {
                 File::delete("cover/" . $product->cover);
@@ -126,8 +133,8 @@ class TestController extends Controller
                 'area' => $request->input('area'),
                 'city_id' => $request->input('city_id'),
             ]);
-            
-        
+
+
         if ($request->hasFile("images")) {
             $files = $request->file("images");
             foreach ($files as $file) {
@@ -140,7 +147,7 @@ class TestController extends Controller
         }
         return redirect("/");
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
