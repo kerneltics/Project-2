@@ -1,8 +1,8 @@
-import formPicture from "@/../public/images/form.png";
-
 import { Icons } from "@/config/icons.tsx";
 
 import Form from "@/components/ui/Form.tsx";
+
+import formPicture from "/images/form.png";
 
 // The main component
 function ContactUs() {
