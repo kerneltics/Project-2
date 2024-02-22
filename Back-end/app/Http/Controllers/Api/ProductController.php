@@ -60,7 +60,7 @@ class ProductController extends Controller
                         'image' => $imageURL,
                         'number_of_rooms' => $request->input('number_of_rooms'),
                         'number_of_bathrooms' => $request->input('number_of_bathrooms'),
-                        'area' => $request->input('area'),
+                        'area' => $request->input('area'), 
                         'user_id' => auth()->user()->id,
                         'city_id' => $request->input('city_id'),
                     ]);
