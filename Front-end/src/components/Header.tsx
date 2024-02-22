@@ -22,9 +22,9 @@ const DesktopNavbar = () => (
     <ul className="flex justify-center gap-10 font-bold">
       {ROUTES.map(({ path, label }) => {
         return (
-          <li key={label}>
+          <li className="hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-300 relative" key={label}>
             <Link
-              className="border-b-0 border-primary transition-all transt hover:border-b"
+            
               to={path}
             >
               {label}
@@ -69,8 +69,8 @@ const MobileNavbar = () => (
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
-                <li key={label}>
-                  <Link className="border-b-0 border-primary transition-all hover:border-b" to={path}>{label}</Link>
+                <li className="hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-300 relative" key={label}>
+                  <Link to={path}>{label}</Link>
                 </li>
               );
             })}
