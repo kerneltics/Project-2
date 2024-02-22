@@ -5,6 +5,8 @@ import { ROUTES } from "@/config/routes";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+const linksAnimation =
+  "hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
 export const Header = () => {
   return (
     <header className="container">
@@ -22,19 +24,14 @@ const DesktopNavbar = () => (
     <ul className="flex justify-center gap-10 font-bold">
       {ROUTES.map(({ path, label }) => {
         return (
-          <li className="hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-300 relative" key={label}>
-            <Link
-            
-              to={path}
-            >
-              {label}
-            </Link>
+          <li className={linksAnimation} key={label}>
+            <Link to={path}>{label}</Link>
           </li>
         );
       })}
     </ul>
     <Link
-      className="duration-400 rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
+      className="rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all duration-400 ease-out hover:bg-primary hover:text-white"
       to=""
     >
       تواصل معنا
@@ -69,7 +66,10 @@ const MobileNavbar = () => (
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
-                <li className="hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-300 relative" key={label}>
+                <li
+                  className={linksAnimation}
+                  key={label}
+                >
                   <Link to={path}>{label}</Link>
                 </li>
               );
