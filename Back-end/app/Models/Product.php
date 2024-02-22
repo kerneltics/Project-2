@@ -13,7 +13,7 @@ class Product extends Model
         'name',
         'price',
         'description',
-        'image',
+        'cover',
         'number_of_rooms',
         'number_of_bathrooms',
         'area',
@@ -28,5 +28,9 @@ class Product extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function images(){
+        return $this->hasMany(Image::class);
     }
 }
