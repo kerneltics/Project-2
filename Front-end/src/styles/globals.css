@@ -43,12 +43,14 @@
 
   body {
     @apply bg-background text-foreground;
+    
   }
+
 }
 
 * {
   min-width: 0;
-  font-family: "Tajawal", sans-serif;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
 html,
