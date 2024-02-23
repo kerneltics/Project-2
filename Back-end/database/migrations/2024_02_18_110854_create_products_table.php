@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->decimal('price');
             $table->integer('number_of_rooms');
             $table->integer('number_of_bathrooms');

@@ -19,7 +19,12 @@ class ProductController extends Controller
     {
         try {
             $products = Product::with('city')->paginate(6);
-
+            if($products->isEmpty()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No products found',
+                ], 404);
+            }
             return response()->json([
                 'status' => true,
                 'products' => $products
@@ -36,6 +41,13 @@ class ProductController extends Controller
         try {
             // Get the last 3 products created
             $products = Product::with('city')->latest()->take(3)->get();
+
+            if($products->isEmpty()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No products found',
+                ], 404);
+            }
 
             return response()->json([
                 'status' => true,
@@ -57,7 +69,7 @@ class ProductController extends Controller
         try {
             $this->validate($request,[
                 'name' => 'required',
-                'image' => 'image|nullable',
+                'image' => 'image|required',
                 'price' => 'required',
                 'description' => 'nullable',
                 'number_of_rooms' => 'numeric|nullable',
@@ -70,7 +82,6 @@ class ProductController extends Controller
 
                     // Image handling
                     $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
-
                     // Product creation (minimal change)
                     $product = Product::create([
                         'name' => $request->input('name'),
@@ -124,6 +135,12 @@ class ProductController extends Controller
     {
         try {
             $product = Product::with('city')->find($id);
+            if(!$product) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'product not found',
+                ], 404);
+            }
             return response()->json([
                 'status' => true,
                 'product' => $product
