@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { Icons } from "@/config/icons";
 
 export const Footer = () => {
@@ -18,9 +20,15 @@ export const Footer = () => {
         <div className="mb-6 w-full px-4 md:w-1/5">
           <h3 className="mb-2 text-lg font-semibold">روابط مهمة </h3>
           <ul>
-            <li>من نحن</li>
-            <li>سياسة الخصوصية</li>
-            <li>سياسة التراجع عن القرار</li>
+            <li>
+              <Link to="/">من نحن؟</Link>
+            </li>
+            <li>
+              <Link to="/">سياسة الخصوصية</Link>
+            </li>
+            <li>
+              <Link to="/">سياسة التراجع عن القرار</Link>
+            </li>
           </ul>
         </div>
 
@@ -29,13 +37,14 @@ export const Footer = () => {
           <h3 className="mb-2 text-lg font-semibold">تواصل معنا </h3>
           <ul className="flex flex-col gap-2">
             <li className="flex ">
-              <Icons.mobile className="mx-1" /> <p>Kerneltics@</p>
+              <Icons.mobile className="mx-1" /> <Link to="/">Kerneltics@</Link>
             </li>
             <li className="flex">
-              <Icons.phone className="mx-1" /> <p>9668529630+</p>
+              <Icons.phone className="mx-1" /> <Link to="/">9668529630+</Link>
             </li>
             <li className="flex">
-              <Icons.mail className="mx-1" /> <p>support@rental.com</p>
+              <Icons.mail className="m-1" />
+              <Link to="/">support@rental.com</Link>
             </li>
           </ul>
         </div>
@@ -49,7 +58,7 @@ export const Footer = () => {
               placeholder="بريدك الإلكتروني"
               className="w-full rounded bg-white px-4 py-2 text-white focus:bg-gray-600 focus:outline-none"
             />
-            <button className="flex items-center justify-center rounded bg-primary px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-600 focus:outline-none">
+            <button className="flex items-center justify-center rounded bg-primary px-4 py-2 text-white  focus:outline-none">
               اشتراك
             </button>
           </form>
