@@ -12,7 +12,7 @@ import Slider from "react-slick";
 
 import { Icons } from "@/config/icons";
 
-import { Heading } from "./Heading";
+import { SubHeading } from "@/components/SubHeading";
 
 // fake data
 const CustomersData = [
@@ -132,8 +132,8 @@ export function CustomerOpinions() {
   }, []);
 
   return (
-    <section className=" flex w-full flex-col items-center justify-center gap-8">
-      <Heading className=" pb-16">آراء العملاء</Heading>
+    <section className=" flex w-full flex-col items-center justify-center gap-8 space-y-8">
+      <SubHeading>آراء العملاء</SubHeading>
       <div className=" w-4/5">
         <Slider
           asNavFor={nav1}
