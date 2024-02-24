@@ -50,9 +50,9 @@ export function OneReal() {
                     <Icons.bed className="mx-2" /> 5 غرف
                   </p>
                 </div>
-                <SubHeading className="mb-2 flex flex-row  justify-end text-2xl font-medium">
+                <div className="mb-2 flex flex-row  justify-end text-2xl font-medium">
                   <p className="mx-2 text-2xl text-gray-500">SAR </p> 500000
-                </SubHeading>
+                </div>
                 <Button className=" w-full text-white ">احجز</Button>
               </div>
             </div>
