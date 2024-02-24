@@ -6,7 +6,7 @@ import { ROUTES } from "@/config/routes";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const linksAnimation =
-  "hover:after:w-[100%] after:content-[''] after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
+  "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
 export const Header = () => {
   return (
     <header className="container bg-white">

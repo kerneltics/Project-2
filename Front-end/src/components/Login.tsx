@@ -2,7 +2,10 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button.tsx";
@@ -19,6 +22,7 @@ type LoginSchema = z.infer<typeof loginSchema>;
 function Login() {
   // A state to check if the form is submited
   const [isSubmited, setIsSubmited] = useState(false);
+  const navigate = useNavigate();
 
   // The react-hook-form hook
   const {
@@ -33,12 +37,22 @@ function Login() {
   const submit = handleSubmit(async (data) => {
     setIsSubmited(true);
 
-    if (data) {
+    try {
+      const res = await axios.post("https://www.kerneltics.com/api/login", {
+        email: data.userName,
+        password: data.password,
+      });
+
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.token);
+        setIsSubmited(false);
+        toast.success("تم الدخول بنجاح");
+        console.log(res);
+        navigate("/admin");
+      }
+    } catch (error) {
       setIsSubmited(false);
-      console.log(data);
-    } else {
-      setIsSubmited(false);
-      console.log("error");
+      toast.error("خطأ في الإيميل أو الرقم السري");
     }
   });
 
@@ -68,7 +82,7 @@ function Login() {
           />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
         </div>
-        <div className="mt-10 h-2/3 w-3/12">
+        <div className="mt-10 h-2/3 w-4/12">
           <Button
             disabled={isSubmited}
             className="h-full w-full rounded-xl bg-primary text-white"
