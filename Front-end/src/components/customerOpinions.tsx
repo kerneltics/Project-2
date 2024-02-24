@@ -1,68 +1,79 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
+
 import Slider from "react-slick";
+
 import { Icons } from "@/config/icons";
-import { Heading } from "./Heading";
 
-import customer1 from "@/../public/customerOpinionsImages/customers/customer1.png"
-import customer2 from "@/../public/customerOpinionsImages/customers/customer2.png" 
-import customer3 from "@/../public/customerOpinionsImages/customers/customer3.png"
-import customer4 from "@/../public/customerOpinionsImages/customers/customer4.png"
-import customer5 from "@/../public/customerOpinionsImages/customers/customer5.png"
+import { SubHeading } from "@/components/SubHeading";
 
+import customer1 from "/customerOpinionsImages/customers/customer1.png";
+import customer2 from "/customerOpinionsImages/customers/customer2.png";
+import customer3 from "/customerOpinionsImages/customers/customer3.png";
+import customer4 from "/customerOpinionsImages/customers/customer4.png";
+import customer5 from "/customerOpinionsImages/customers/customer5.png";
 
 // fake data
-const CustomersData=[
+const CustomersData = [
   {
-    id:1,
+    id: 1,
     photo: customer1,
     rate: 5,
-    customerName:"عبدالله",
-    comment:'"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."'
+    customerName: "عبدالله",
+    comment:
+      '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id:2,
+    id: 2,
     photo: customer2,
     rate: 4,
-    customerName:"احمد",
-    comment: '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."'
+    customerName: "احمد",
+    comment:
+      '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."',
   },
   {
-    id:3,
+    id: 3,
     photo: customer3,
     rate: 5,
-    customerName:"حاتم",
-    comment: '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول مذهلة، كانت تجربة فريدة ومميزة في عالم العقارات."'
+    customerName: "حاتم",
+    comment:
+      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول مذهلة، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id:4,
+    id: 4,
     photo: customer4,
     rate: 5,
-    customerName:"خالد",
-    comment: '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."'
+    customerName: "خالد",
+    comment:
+      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id:5,
+    id: 5,
     photo: customer5,
     rate: 3,
-    customerName:"سعد",
-    comment: '"كانت تجربتي مع اصول مذهلة جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."'
-  },{
-    id:1,
-    photo: customer1,
-    rate: 5,
-    customerName:"عبدالله",
-    comment:'"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."'
+    customerName: "سعد",
+    comment:
+      '"كانت تجربتي مع اصول مذهلة جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
   },
   {
-    id:2,
+    id: 1,
+    photo: customer1,
+    rate: 5,
+    customerName: "عبدالله",
+    comment:
+      '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
+  },
+  {
+    id: 2,
     photo: customer2,
     rate: 4,
-    customerName:"احمد",
-    comment: '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."'
+    customerName: "احمد",
+    comment:
+      '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."',
   },
-]
+];
 
 // Props type for the Stars component
 type StarsProps = {
@@ -71,13 +82,22 @@ type StarsProps = {
 
 //* filled stars component
 const Stars: React.FC<StarsProps> = ({ count }) => (
-  <div className=" flex">{Array.from({ length: count }, (_, index) => <Icons.star key={index} />)}</div>
-); 
+  <div className=" flex">
+    {Array.from({ length: count }, (_, index) => (
+      <Icons.star key={index} />
+    ))}
+  </div>
+);
 
 //* empty stars component
 const EmptyStars: React.FC<StarsProps> = ({ count }) => (
-  <div className=" flex">{Array.from({ length: count }, (_, index) => <Icons.emptyStar key={index} />)}</div>
+  <div className=" flex">
+    {Array.from({ length: count }, (_, index) => (
+      <Icons.emptyStar key={index} />
+    ))}
+  </div>
 );
+
 
 
 const customers= CustomersData.map((c)=>{
@@ -86,10 +106,12 @@ const customers= CustomersData.map((c)=>{
       <div className=" pb-2">
         <h2 className=" font-medium py-2  text-2xl text-black">{c.customerName}</h2>
         <div className=" flex  justify-center  items-center">
+
           <Stars count={c.rate} />
-          <EmptyStars count={5-c.rate} />
+          <EmptyStars count={5 - c.rate} />
         </div>
       </div>
+
       <div>
         
       </div>
@@ -104,9 +126,10 @@ const customers= CustomersData.map((c)=>{
       
       </div>
      
+
     </div>
-  ) 
-})
+  );
+});
 
 
 
@@ -117,11 +140,11 @@ export function CustomerOpinions() {
   const sliderRef1 = useRef<Slider | null>(null);
   const sliderRef2 = useRef<Slider | null>(null);
 
-
   useEffect(() => {
     setNav1(sliderRef1.current);
     setNav2(sliderRef2.current);
   }, []);
+
 
 
 

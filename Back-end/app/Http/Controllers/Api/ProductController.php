@@ -19,10 +19,15 @@ class ProductController extends Controller
     {
         try {
             $products = Product::with('city')->paginate(6);
-
+            if($products->isEmpty()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No products found',
+                ], 404);
+            }
             return response()->json([
                 'status' => true,
-                'products' => $products
+                'result' => $products
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -37,9 +42,16 @@ class ProductController extends Controller
             // Get the last 3 products created
             $products = Product::with('city')->latest()->take(3)->get();
 
+            if($products->isEmpty()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No products found',
+                ], 404);
+            }
+
             return response()->json([
                 'status' => true,
-                'products' => $products
+                'result' => $products
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -57,7 +69,7 @@ class ProductController extends Controller
         try {
             $this->validate($request,[
                 'name' => 'required',
-                'image' => 'image|nullable',
+                'image' => 'image|required',
                 'price' => 'required',
                 'description' => 'nullable',
                 'number_of_rooms' => 'numeric|nullable',
@@ -66,11 +78,10 @@ class ProductController extends Controller
                 'city_id' => 'required',
             ]);
 
-            if ($request->has('image')) {
+            if ($request->hasFile('image')) {
 
                     // Image handling
                     $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
-
                     // Product creation (minimal change)
                     $product = Product::create([
                         'name' => $request->input('name'),
@@ -87,7 +98,7 @@ class ProductController extends Controller
                     return response()->json([
                         'status' => true,
                         'message' => 'Product created successfully',
-                        'product' => $product,
+                        'result' => $product,
                     ], 201);
 
             } else {
@@ -106,7 +117,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status' => true,
                     'message' => 'Product created successfully',
-                    'product' => $product,
+                    'result' => $product,
                 ], 201);
             }
         } catch (\Throwable $th) {
@@ -124,9 +135,15 @@ class ProductController extends Controller
     {
         try {
             $product = Product::with('city')->find($id);
+            if(!$product) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'product not found',
+                ], 404);
+            }
             return response()->json([
                 'status' => true,
-                'product' => $product
+                'result' => $product
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -184,7 +201,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status'=>true,
                     'message'=>'product Created successfuly',
-                    'product'=>$product
+                    'result'=>$product
                 ],201);
             } else {
                 $product->update([
@@ -200,7 +217,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status'=>true,
                     'message'=>'product Updated successfuly',
-                    'product'=>$product
+                    'result'=>$product
                 ],201);
             }
         } catch (\Throwable $th) {

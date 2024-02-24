@@ -15,6 +15,7 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "3xl": "1800px",
       },
     },
     extend: {
@@ -53,6 +54,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundImage: {
+        hero: "var(--hero)"
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -71,6 +75,9 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      transitionDuration: {
+        "400": "400ms",
       },
     },
   },
