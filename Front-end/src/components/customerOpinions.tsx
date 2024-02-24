@@ -111,9 +111,6 @@ const customers= CustomersData.map((c)=>{
 
 
 
-
-
-
 export function CustomerOpinions() {
   const [nav1, setNav1] = useState<Slider | null>(null);
   const [nav2, setNav2] = useState<Slider | null>(null);
