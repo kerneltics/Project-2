@@ -40,7 +40,7 @@ const DesktopNavbar = () => (
 );
 
 const MobileNavbar = () => (
-  <div className="flex w-full items-center justify-between md:hidden">
+  <div className="container flex w-full items-center justify-between md:hidden">
     <Link to="/">
       <Icons.textLogo className="size-[70px]" />
     </Link>
@@ -67,7 +67,7 @@ const MobileNavbar = () => (
             {ROUTES.map(({ path, label }) => {
               return (
                 <li className={linksAnimation} key={label}>
-                  <Link to={path}>{label}</Link>
+                  <Link  to={path}>{label}</Link>
                 </li>
               );
             })}
