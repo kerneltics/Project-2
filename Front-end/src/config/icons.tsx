@@ -796,5 +796,68 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
         stroke="#3B3B3B"
       />
     </svg>
+  ), 
+  whiteArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_364)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 74 30)" fill="white" shape-rendering="crispEdges"/>
+    <path d="M56.0996 55.8829L50.2329 49.9995L56.0996 44.1162" stroke="#171717" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_364" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="17"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_364"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_364" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+  ),
+  blueArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect x="4" width="40" height="40" rx="20" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M21.9004 25.8829L27.7671 19.9995L21.9004 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+  ),
+  blueArrowNext: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 44 0)" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M26.0996 25.8829L20.2329 19.9995L26.0996 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g> 
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+
   ),
 } as const;
