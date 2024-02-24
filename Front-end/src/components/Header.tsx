@@ -9,7 +9,7 @@ const linksAnimation =
   "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
 export const Header = () => {
   return (
-    <header className="container bg-white">
+    <header className="bg-white">
       <DesktopNavbar />
       <MobileNavbar />
     </header>
@@ -17,7 +17,7 @@ export const Header = () => {
 };
 
 const DesktopNavbar = () => (
-  <nav className="hidden flex-1 items-center justify-between md:flex">
+  <nav className="container hidden flex-1 items-center justify-between md:flex">
     <Link to="/">
       <Icons.textLogo />
     </Link>
@@ -66,10 +66,7 @@ const MobileNavbar = () => (
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
-                <li
-                  className={linksAnimation}
-                  key={label}
-                >
+                <li className={linksAnimation} key={label}>
                   <Link to={path}>{label}</Link>
                 </li>
               );
