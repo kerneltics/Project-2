@@ -355,8 +355,8 @@ l-24 30 -1 -52z"
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width="70.000000pt"
-      height="70.000000pt"
+      width="118.000000pt"
+      height="118.000000pt"
       viewBox="0 0 70.000000 70.000000"
       preserveAspectRatio="xMidYMid meet"
       className={cn("size-[70px]", className)}
@@ -710,21 +710,154 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
         </filter>
       </defs>
     </svg>
-  ),  star: ({ className = "", ...props }: LucideProps) => (
-    <svg  width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props}>
-      <path d="M6.38801 1.2444C7.04987 -0.0877011 8.95013 -0.0876985 9.61199 1.2444L10.5323 3.09675C10.7944 3.62426 11.298 3.99016 11.8807 4.07642L13.9268 4.37931C15.3983 4.59713 15.9855 6.40439 14.9231 7.4455L13.4458 8.89321C13.0251 9.30549 12.8327 9.89752 12.9308 10.4783L13.275 12.5179C13.5225 13.9846 11.9852 15.1016 10.6667 14.4129L8.83336 13.4553C8.31125 13.1826 7.68875 13.1826 7.16664 13.4553L5.33329 14.4129C4.01484 15.1016 2.4775 13.9846 2.72503 12.5179L3.06924 10.4783C3.16726 9.89752 2.9749 9.30549 2.55419 8.89321L1.07691 7.4455C0.0145319 6.40439 0.601749 4.59713 2.07318 4.37931L4.11926 4.07642C4.70195 3.99016 5.20557 3.62426 5.46766 3.09675L6.38801 1.2444Z" fill="#073762"/>
+  ),
+  star: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="16"
+      height="15"
+      viewBox="0 0 16 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-4", className)}
+      {...props}
+    >
+      <path
+        d="M6.38801 1.2444C7.04987 -0.0877011 8.95013 -0.0876985 9.61199 1.2444L10.5323 3.09675C10.7944 3.62426 11.298 3.99016 11.8807 4.07642L13.9268 4.37931C15.3983 4.59713 15.9855 6.40439 14.9231 7.4455L13.4458 8.89321C13.0251 9.30549 12.8327 9.89752 12.9308 10.4783L13.275 12.5179C13.5225 13.9846 11.9852 15.1016 10.6667 14.4129L8.83336 13.4553C8.31125 13.1826 7.68875 13.1826 7.16664 13.4553L5.33329 14.4129C4.01484 15.1016 2.4775 13.9846 2.72503 12.5179L3.06924 10.4783C3.16726 9.89752 2.9749 9.30549 2.55419 8.89321L1.07691 7.4455C0.0145319 6.40439 0.601749 4.59713 2.07318 4.37931L4.11926 4.07642C4.70195 3.99016 5.20557 3.62426 5.46766 3.09675L6.38801 1.2444Z"
+        fill="#073762"
+      />
     </svg>
-  ),  emptyStar: ({ className = "", ...props }: LucideProps) => (
-    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-     <path d="M9.16422 1.46688L10.0846 3.31922C10.4195 3.99327 11.063 4.46081 11.8075 4.57103L13.8536 4.87392C14.9163 5.03124 15.3404 6.33648 14.5731 7.08839L13.0958 8.5361C12.5583 9.0629 12.3125 9.81939 12.4377 10.5616L12.7819 12.6011C12.9607 13.6604 11.8504 14.4671 10.8982 13.9697L9.06485 13.0121C8.39771 12.6636 7.60229 12.6636 6.93515 13.0121L5.1018 13.9697C4.14959 14.4671 3.03928 13.6604 3.21806 12.6011L3.56226 10.5616C3.68752 9.81939 3.44172 9.0629 2.90415 8.5361L1.42687 7.08839C0.659598 6.33648 1.0837 5.03124 2.1464 4.87392L4.19248 4.57103C4.93703 4.46081 5.58054 3.99327 5.91544 3.31922L6.83578 1.46688C7.31379 0.504807 8.68621 0.504807 9.16422 1.46688Z" stroke="#073762"/>
+  ),
+  emptyStar: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="16"
+      height="15"
+      viewBox="0 0 16 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-4", className)}
+      {...props}
+    >
+      <path
+        d="M9.16422 1.46688L10.0846 3.31922C10.4195 3.99327 11.063 4.46081 11.8075 4.57103L13.8536 4.87392C14.9163 5.03124 15.3404 6.33648 14.5731 7.08839L13.0958 8.5361C12.5583 9.0629 12.3125 9.81939 12.4377 10.5616L12.7819 12.6011C12.9607 13.6604 11.8504 14.4671 10.8982 13.9697L9.06485 13.0121C8.39771 12.6636 7.60229 12.6636 6.93515 13.0121L5.1018 13.9697C4.14959 14.4671 3.03928 13.6604 3.21806 12.6011L3.56226 10.5616C3.68752 9.81939 3.44172 9.0629 2.90415 8.5361L1.42687 7.08839C0.659598 6.33648 1.0837 5.03124 2.1464 4.87392L4.19248 4.57103C4.93703 4.46081 5.58054 3.99327 5.91544 3.31922L6.83578 1.46688C7.31379 0.504807 8.68621 0.504807 9.16422 1.46688Z"
+        stroke="#073762"
+      />
     </svg>
-  ), beforCotation: ({ className = "", ...props }: LucideProps) => (
-    <svg width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path opacity="0.2" d="M6.2264 17.4574C8.12894 16.2049 10.3872 15.605 12.6605 15.7483C14.9338 15.8916 17.0988 16.7702 18.8291 18.2517C20.5593 19.7332 21.7609 21.7371 22.2525 23.9612C22.7441 26.1853 22.4992 28.509 21.5546 30.5817C20.61 32.6545 19.017 34.3638 17.016 35.452C15.0149 36.5401 12.7142 36.948 10.461 36.6141C8.20776 36.2803 6.12422 35.2227 4.52465 33.6011C2.92507 31.9794 1.89621 29.8816 1.59327 27.624C0.635144 22.92 0.262394 17.2631 2.13664 12.1417C4.14739 6.6555 8.60464 2.15625 16.5873 0.0667496C17.2525 -0.0861021 17.9511 0.0261536 18.5349 0.379715C19.1187 0.733276 19.5419 1.30034 19.7146 1.96066C19.8874 2.62097 19.7962 3.32261 19.4603 3.9168C19.1244 4.51098 18.5704 4.95098 17.9155 5.1435C11.458 6.834 8.43927 10.2097 7.0664 13.9477C6.65952 15.0634 6.3839 16.242 6.2264 17.46" fill="#3F5B4D"/>
+  ),
+  beforeQuotation: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="23"
+      height="37"
+      viewBox="0 0 23 37"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-4", className)}
+      {...props}
+    >
+      <path
+        opacity="0.2"
+        d="M6.2264 17.4574C8.12894 16.2049 10.3872 15.605 12.6605 15.7483C14.9338 15.8916 17.0988 16.7702 18.8291 18.2517C20.5593 19.7332 21.7609 21.7371 22.2525 23.9612C22.7441 26.1853 22.4992 28.509 21.5546 30.5817C20.61 32.6545 19.017 34.3638 17.016 35.452C15.0149 36.5401 12.7142 36.948 10.461 36.6141C8.20776 36.2803 6.12422 35.2227 4.52465 33.6011C2.92507 31.9794 1.89621 29.8816 1.59327 27.624C0.635144 22.92 0.262394 17.2631 2.13664 12.1417C4.14739 6.6555 8.60464 2.15625 16.5873 0.0667496C17.2525 -0.0861021 17.9511 0.0261536 18.5349 0.379715C19.1187 0.733276 19.5419 1.30034 19.7146 1.96066C19.8874 2.62097 19.7962 3.32261 19.4603 3.9168C19.1244 4.51098 18.5704 4.95098 17.9155 5.1435C11.458 6.834 8.43927 10.2097 7.0664 13.9477C6.65952 15.0634 6.3839 16.242 6.2264 17.46"
+        fill="#3F5B4D"
+      />
     </svg>
-  ), afterCotation: ({ className = "", ...props }: LucideProps) => (
-    <svg width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props}>
-      <path opacity="0.2" d="M16.7736 17.4574C14.8711 16.2049 12.6128 15.605 10.3395 15.7483C8.06621 15.8916 5.90116 16.7702 4.17093 18.2517C2.4407 19.7332 1.23914 21.7371 0.747502 23.9612C0.255863 26.1853 0.500808 28.509 1.44539 30.5817C2.38997 32.6545 3.98295 34.3638 5.98405 35.452C7.98515 36.5401 10.2858 36.948 12.539 36.6141C14.7922 36.2803 16.8758 35.2227 18.4754 33.6011C20.0749 31.9794 21.1038 29.8816 21.4067 27.624C22.3649 22.92 22.7376 17.2631 20.8634 12.1417C18.8526 6.6555 14.3954 2.15625 6.41273 0.0667496C5.74752 -0.0861015 5.04894 0.0261536 4.46511 0.379715C3.88128 0.733276 3.45812 1.30034 3.28535 1.96066C3.11259 2.62097 3.20382 3.32261 3.53969 3.9168C3.87555 4.51098 4.42965 4.95098 5.08448 5.1435C11.542 6.834 14.5607 10.2097 15.9336 13.9477C16.3405 15.0634 16.6161 16.242 16.7736 17.46" fill="#3F5B4D"/>
+  ),
+  afterQuotation: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="23"
+      height="37"
+      viewBox="0 0 23 37"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-4", className)}
+      {...props}
+    >
+      <path
+        opacity="0.2"
+        d="M16.7736 17.4574C14.8711 16.2049 12.6128 15.605 10.3395 15.7483C8.06621 15.8916 5.90116 16.7702 4.17093 18.2517C2.4407 19.7332 1.23914 21.7371 0.747502 23.9612C0.255863 26.1853 0.500808 28.509 1.44539 30.5817C2.38997 32.6545 3.98295 34.3638 5.98405 35.452C7.98515 36.5401 10.2858 36.948 12.539 36.6141C14.7922 36.2803 16.8758 35.2227 18.4754 33.6011C20.0749 31.9794 21.1038 29.8816 21.4067 27.624C22.3649 22.92 22.7376 17.2631 20.8634 12.1417C18.8526 6.6555 14.3954 2.15625 6.41273 0.0667496C5.74752 -0.0861015 5.04894 0.0261536 4.46511 0.379715C3.88128 0.733276 3.45812 1.30034 3.28535 1.96066C3.11259 2.62097 3.20382 3.32261 3.53969 3.9168C3.87555 4.51098 4.42965 4.95098 5.08448 5.1435C11.542 6.834 14.5607 10.2097 15.9336 13.9477C16.3405 15.0634 16.6161 16.242 16.7736 17.46"
+        fill="#3F5B4D"
+      />
     </svg>
+  ),
+  location: ({ className = "", ...props }: LucideProps) => (
+    <svg
+      width="16"
+      height="17"
+      viewBox="0 0 16 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("size-4", className)}
+      {...props}
+    >
+      <path
+        d="M7.99992 9.45395C9.14867 9.45395 10.0799 8.5227 10.0799 7.37395C10.0799 6.22519 9.14867 5.29395 7.99992 5.29395C6.85117 5.29395 5.91992 6.22519 5.91992 7.37395C5.91992 8.5227 6.85117 9.45395 7.99992 9.45395Z"
+        stroke="#3B3B3B"
+      />
+      <path
+        d="M2.41281 6.15968C3.72615 0.386343 12.2795 0.39301 13.5861 6.16634C14.3528 9.55301 12.2461 13.2842 10.3995 15.0575C9.05948 16.3508 6.93948 16.3508 5.59281 15.0575C3.75281 13.2842 1.64615 9.54634 2.41281 6.15968Z"
+        stroke="#3B3B3B"
+      />
+    </svg>
+  ), 
+  whiteArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_364)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 74 30)" fill="white" shape-rendering="crispEdges"/>
+    <path d="M56.0996 55.8829L50.2329 49.9995L56.0996 44.1162" stroke="#171717" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_364" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="17"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_364"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_364" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+  ),
+  blueArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect x="4" width="40" height="40" rx="20" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M21.9004 25.8829L27.7671 19.9995L21.9004 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+  ),
+  blueArrowNext: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 44 0)" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M26.0996 25.8829L20.2329 19.9995L26.0996 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g> 
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+
   ),
 } as const;

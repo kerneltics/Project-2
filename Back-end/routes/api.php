@@ -25,9 +25,9 @@ Route::post('/register', AuthController::class.'@register');
 Route::post('/login', AuthController::class.'@login');
 Route::post('/logout', AuthController::class.'@logout')->middleware('auth:sanctum');
 
-Route::get('/products', ProductController::class.'@index');
-Route::get('/bestProducts', ProductController::class.'@bestProducts');
-Route::get('/product/{id}', ProductController::class.'@show');
-Route::put('/updateProduct/{id}', ProductController::class.'@update')->middleware('auth:sanctum');
-Route::post('/createProduct', ProductController::class.'@store')->middleware('auth:sanctum');
-Route::delete('/deleteProduct/{id}', ProductController::class.'@destroy')->middleware('auth:sanctum');
+Route::get('/listings', ProductController::class.'@index');
+Route::get('/featured-listing', ProductController::class.'@bestProducts');
+Route::get('/listing/{id}', ProductController::class.'@show');
+Route::put('/update-listing/{id}', ProductController::class.'@update')->middleware('auth:sanctum');
+Route::post('/create-listing', ProductController::class.'@store')->middleware('auth:sanctum');
+Route::delete('/delete-listing/{id}', ProductController::class.'@destroy')->middleware('auth:sanctum');
