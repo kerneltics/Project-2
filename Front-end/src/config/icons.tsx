@@ -355,8 +355,8 @@ l-24 30 -1 -52z"
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width="70.000000pt"
-      height="70.000000pt"
+      width="118.000000pt"
+      height="118.000000pt"
       viewBox="0 0 70.000000 70.000000"
       preserveAspectRatio="xMidYMid meet"
       className={cn("size-[70px]", className)}
