@@ -78,7 +78,7 @@ class ProductController extends Controller
                 'city_id' => 'required',
             ]);
 
-            if ($request->has('image')) {
+            if ($request->hasFile('image')) {
 
                     // Image handling
                     $imageURL = Cloudinary::upload($request->file('image')->getRealPath(), ['folder' => 'Osol'])->getSecurePath();
