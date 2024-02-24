@@ -64,7 +64,7 @@ const CustomersData=[
   },
 ]
 
-// Define Props type for the Stars component
+// Props type for the Stars component
 type StarsProps = {
   count: number;
 };
@@ -82,8 +82,8 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
 
 const customers= CustomersData.map((c)=>{
   return(
-    <div className=" text-center  ">
-      <div className=" pb-6">
+    <div className=" text-center ">
+      <div className=" pb-2">
         <h2 className=" font-medium py-2  text-2xl text-black">{c.customerName}</h2>
         <div className=" flex  justify-center  items-center">
           <Stars count={c.rate} />
@@ -93,14 +93,26 @@ const customers= CustomersData.map((c)=>{
       <div>
         
       </div>
-      
-      <p className={` before:content-[${<Icons.beforCotation/>}] text-[#3E3E3E] text-xl`}>
+      <div className=" h-36 relative">
+         <Icons.beforCotation />
+      <p className= 'pt-5 text-[#3E3E3E] text-xl'>
         {c.comment}
       </p>
+      <div className=" absolute right-1 bottom-0 ">
+        < Icons.afterCotation />
+      </div>
       
+      </div>
+     
     </div>
   ) 
 })
+
+
+
+
+
+
 
 export function CustomerOpinions() {
   const [nav1, setNav1] = useState<Slider | null>(null);
@@ -114,43 +126,59 @@ export function CustomerOpinions() {
     setNav2(sliderRef2.current);
   }, []);
 
-  
+
 
   return (
     <section className=" w-full flex justify-center flex-col items-center gap-8">
       <Heading className=" pb-16">
         آراء العملاء
       </Heading>
-    <div className=" w-4/5">
+
+      {/* the opacity effect */}
+      <div className=" -translate-y-3 h-[180px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
+    </div>
+
+    <div className="  w-4/5 ">
+    
       <Slider
         asNavFor={nav1}
         ref={(slider) => (sliderRef2.current = slider)}
         slidesToShow={5}
         focusOnSelect={true}
         autoplay={true}
-        autoplaySpeed={3000}
-        arrow={true}
+        autoplaySpeed={4000}
+        className=" relative"
       >
+      
+        
         <div>
          {/* moved it a little so every image align with its comment */}
-          <img src={customer1} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer1} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
         </div>
         <div>
-          <img src={customer2}  className=" md:translate-x-8 lg:translate-x-11  xl:translate-x-20"></img>
+          <img src={customer2}  className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-20"></img>
         </div>
         <div>
-          <img src={customer3} className="md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer3} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
         </div>
         <div>
-          <img src={customer4} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer4} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
         </div>
         <div>
-          <img src={customer5} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer5} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
         </div>
       </Slider>
       <Slider asNavFor={nav2} ref={(slider) => (sliderRef1.current = slider)}>
         {customers}
       </Slider>
+
+      <button className="absolute left-5 bottom-1/2 z-20" onClick={() => sliderRef2?.current?.slickPrev()}>
+        <Icons.blueArrowNext/>
+      </button>
+      <button className="  absolute right-5 bottom-1/2 z-20" onClick={() => sliderRef2?.current?.slickNext()}>
+      <Icons.blueArrow/>
+      </button>
+
     </div>
     </section>
   );

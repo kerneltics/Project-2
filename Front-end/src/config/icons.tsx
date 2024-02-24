@@ -726,5 +726,68 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
     <svg width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props}>
       <path opacity="0.2" d="M16.7736 17.4574C14.8711 16.2049 12.6128 15.605 10.3395 15.7483C8.06621 15.8916 5.90116 16.7702 4.17093 18.2517C2.4407 19.7332 1.23914 21.7371 0.747502 23.9612C0.255863 26.1853 0.500808 28.509 1.44539 30.5817C2.38997 32.6545 3.98295 34.3638 5.98405 35.452C7.98515 36.5401 10.2858 36.948 12.539 36.6141C14.7922 36.2803 16.8758 35.2227 18.4754 33.6011C20.0749 31.9794 21.1038 29.8816 21.4067 27.624C22.3649 22.92 22.7376 17.2631 20.8634 12.1417C18.8526 6.6555 14.3954 2.15625 6.41273 0.0667496C5.74752 -0.0861015 5.04894 0.0261536 4.46511 0.379715C3.88128 0.733276 3.45812 1.30034 3.28535 1.96066C3.11259 2.62097 3.20382 3.32261 3.53969 3.9168C3.87555 4.51098 4.42965 4.95098 5.08448 5.1435C11.542 6.834 14.5607 10.2097 15.9336 13.9477C16.3405 15.0634 16.6161 16.242 16.7736 17.46" fill="#3F5B4D"/>
     </svg>
+  ), 
+  whiteArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_364)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 74 30)" fill="white" shape-rendering="crispEdges"/>
+    <path d="M56.0996 55.8829L50.2329 49.9995L56.0996 44.1162" stroke="#171717" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_364" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="17"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_364"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_364" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+  ),
+  blueArrow: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect x="4" width="40" height="40" rx="20" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M21.9004 25.8829L27.7671 19.9995L21.9004 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+  ),
+  blueArrowNext: ({ className = "", ...props }: LucideProps) => (
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <g filter="url(#filter0_d_313_365)">
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 44 0)" fill="#4883FB" shape-rendering="crispEdges"/>
+    <path d="M26.0996 25.8829L20.2329 19.9995L26.0996 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g> 
+    <defs>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="4"/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_313_365"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_313_365" result="shape"/>
+    </filter>
+    </defs>
+    </svg>
+
+
   ),
 } as const;
