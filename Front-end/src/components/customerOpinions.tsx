@@ -3,16 +3,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 import React, { useEffect, useRef, useState } from "react";
 
-import customer1 from "@/../public/customerOpinionsImages/customers/customer1.png";
-import customer2 from "@/../public/customerOpinionsImages/customers/customer2.png";
-import customer3 from "@/../public/customerOpinionsImages/customers/customer3.png";
-import customer4 from "@/../public/customerOpinionsImages/customers/customer4.png";
-import customer5 from "@/../public/customerOpinionsImages/customers/customer5.png";
 import Slider from "react-slick";
 
 import { Icons } from "@/config/icons";
 
 import { SubHeading } from "@/components/SubHeading";
+
+import customer1 from "/customerOpinionsImages/customers/customer1.png";
+import customer2 from "/customerOpinionsImages/customers/customer2.png";
+import customer3 from "/customerOpinionsImages/customers/customer3.png";
+import customer4 from "/customerOpinionsImages/customers/customer4.png";
+import customer5 from "/customerOpinionsImages/customers/customer5.png";
 
 // fake data
 const CustomersData = [

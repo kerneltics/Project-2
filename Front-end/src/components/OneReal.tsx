@@ -1,9 +1,8 @@
 import { Icons } from "@/config/icons";
 
-import { SubHeading } from "@/components/SubHeading";
 import { Button } from "@/components/ui/button";
 
-import exImg from "/public/images/exmple.png";
+import exImg from "/images/exmple.png";
 
 export function OneReal() {
   return (
