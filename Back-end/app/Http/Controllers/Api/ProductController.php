@@ -27,7 +27,7 @@ class ProductController extends Controller
             }
             return response()->json([
                 'status' => true,
-                'products' => $products
+                'result' => $products
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -51,7 +51,7 @@ class ProductController extends Controller
 
             return response()->json([
                 'status' => true,
-                'products' => $products
+                'result' => $products
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -98,7 +98,7 @@ class ProductController extends Controller
                     return response()->json([
                         'status' => true,
                         'message' => 'Product created successfully',
-                        'product' => $product,
+                        'result' => $product,
                     ], 201);
 
             } else {
@@ -117,7 +117,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status' => true,
                     'message' => 'Product created successfully',
-                    'product' => $product,
+                    'result' => $product,
                 ], 201);
             }
         } catch (\Throwable $th) {
@@ -143,7 +143,7 @@ class ProductController extends Controller
             }
             return response()->json([
                 'status' => true,
-                'product' => $product
+                'result' => $product
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -201,7 +201,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status'=>true,
                     'message'=>'product Created successfuly',
-                    'product'=>$product
+                    'result'=>$product
                 ],201);
             } else {
                 $product->update([
@@ -217,7 +217,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status'=>true,
                     'message'=>'product Updated successfuly',
-                    'product'=>$product
+                    'result'=>$product
                 ],201);
             }
         } catch (\Throwable $th) {
