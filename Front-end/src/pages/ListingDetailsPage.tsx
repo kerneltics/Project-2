@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useListing } from "@/hooks/use-listing";
 
 import { OneReal } from "@/components/OneReal";
+import { ServerErrorMessage } from "@/components/ServerErrorMessage";
 
 export const ListingDetailsPage = () => {
   const { listingId } = useParams();
@@ -16,7 +17,7 @@ export const ListingDetailsPage = () => {
   }
 
   if (!listing || isError) {
-    return <pre dir="ltr">{JSON.stringify(error, null, 2)}</pre>;
+    return <ServerErrorMessage error={error} />;
   }
   console.log({ listing });
 
