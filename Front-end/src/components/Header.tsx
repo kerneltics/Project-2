@@ -25,7 +25,7 @@ const DesktopNavbar = () => (
       {ROUTES.map(({ path, label }) => {
         return (
           <li className={linksAnimation} key={label}>
-            <Link to={path}>{label}</Link>
+            <a href={path}>{label}</a>
           </li>
         );
       })}
@@ -67,7 +67,7 @@ const MobileNavbar = () => (
             {ROUTES.map(({ path, label }) => {
               return (
                 <li className={linksAnimation} key={label}>
-                  <Link  to={path}>{label}</Link>
+                  <a  href={path}>{label}</a>
                 </li>
               );
             })}

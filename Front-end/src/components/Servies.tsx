@@ -4,7 +4,7 @@ import { SubHeading } from "@/components/SubHeading";
 
 const Services = () => {
   return (
-    <div className="font-ibm-plex-sans-arabic flex  flex-col items-center justify-center space-y-8">
+    <div id="our-services" className="font-ibm-plex-sans-arabic flex  flex-col items-center justify-center space-y-8">
       <SubHeading>خدماتنا </SubHeading>
 
       <div className="mt-8 flex flex-wrap gap-8">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
-// import axios from "axios";
+import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -11,21 +11,12 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button.tsx";
 import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 
-// import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
-
 const addProductSchema = z.object({
   productName: z.string().min(1, "اسم العقار مطلوب"),
   price: z.string().min(1, "السعر مطلوب"),
-  area: z.string().min(1, "المنطقة مطلوبة"),
   rooms: z.string().min(1, "عدد الغرف مطلوب"),
   bathrooms: z.string().min(1, "عدد دورات المياه مطلوب"),
-  areaCode: z
-    .string()
-    .min(1, "رمز المنطقة مطلوب")
-    .regex(
-      /^[A-Z]{1,2}$/,
-      "رمز المنطقة يجب ان يكون حروف كبيرة فقط ولا يزيد عن حرفين",
-    ),
+  areaCode: z.string(),
   description: z.string().min(1, "الوصف مطلوب"),
 });
 
@@ -34,19 +25,17 @@ type AddProductSchema = z.infer<typeof addProductSchema>;
 function AddProduct() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <AnimatePresence mode="wait">
-      <div>
-        <Button onClick={() => setIsOpen(true)}>اضافة منتج</Button>
-
-        {isOpen && <Popup />}
-      </div>
-    </AnimatePresence>
+    <div>
+      <Button onClick={() => setIsOpen(true)}>اضافة منتج</Button>
+      <AnimatePresence mode="wait">
+        {isOpen && <Popup setIsOpen={setIsOpen} />}
+      </AnimatePresence>
+    </div>
   );
 }
 
-function Popup() {
+function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
   const [isSubmited, setIsSubmited] = useState(false);
-  const [areaCode, setAreaCode] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   // Function to handle file selection
@@ -66,36 +55,37 @@ function Popup() {
     resolver: zodResolver(addProductSchema),
   });
 
-  // Function to handle the controlled input change
-  const handleAreaCodeChange = (e: any) => {
-    const inputValue = e.target.value.toUpperCase(); // Convert to uppercase
-    if (/^[A-Z]{0,2}$/.test(inputValue)) {
-      // Directly enforce the pattern
-      setAreaCode(inputValue);
-    }
-  };
-
   // Adjust your submit function to include the file in the form data
   const submit = handleSubmit(async (data) => {
     setIsSubmited(true);
     try {
       const formData = new FormData();
+      const token = localStorage.getItem("token");
       formData.append("image", selectedImage!, selectedImage?.name);
+      formData.append("name", data.productName);
+      formData.append("area", data.areaCode);
+      formData.append("price", data.price);
+      formData.append("number_of_rooms", data.rooms);
+      formData.append("number_of_bathrooms", data.bathrooms);
+      formData.append("city_id", data.areaCode);
+      formData.append("description", data.description);
 
-      // const res = await axios.post(
-      //   "https://www.kerneltics.com/api/createProduct",
-      //   formData, // Change this to formData
-      //   {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   },
-      // );
-      console.log(formData);
-      console.log(data);
+      const response = await axios.post(
+        "https://www.kerneltics.com/api/create-listing",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      console.log(response.data);
       reset();
       setIsSubmited(false);
       toast.success("تم اضافة العقار بنجاح");
+      setIsOpen(false);
     } catch (error) {
       console.error(error);
       setIsSubmited(false);
@@ -104,32 +94,34 @@ function Popup() {
   });
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 1] }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed left-0 top-0 z-50 h-screen w-screen bg-black bg-opacity-50"
-    >
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1] }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        onClick={() => setIsOpen(false)}
+        className="fixed left-0 top-0 z-30 h-screen w-screen bg-black bg-opacity-50"
+      ></motion.div>
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 top-0 m-auto h-4/5 w-8/12 rounded-2xl bg-white"
+        exit={{ scale: [1, 0], opacity: [1, 0], transition: { duration: 0.3 } }}
+        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto h-4/5 w-8/12 rounded-2xl bg-white"
       >
         <motion.h1
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: [0, 1] }}
-          exit={{ x: 100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: [0, 1] }}
+          exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           className="mt-10 text-center text-2xl font-bold"
         >
           اضافة عقار
         </motion.h1>
         <motion.form
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: [0, 1] }}
-          exit={{ x: 100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: [0, 1] }}
+          exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           onSubmit={submit}
           className="mx-auto mt-14 grid w-8/12 grid-cols-2 grid-rows-7  items-center justify-center gap-x-3 gap-y-3"
@@ -153,13 +145,24 @@ function Popup() {
             <ErrorMessage>{errors.price?.message}</ErrorMessage>
           </div>
           <div className="h-12 text-start">
-            <input
-              type="text"
-              placeholder="المنطقة"
-              className={`mb-1 w-full rounded-xl border ${errors.area?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
-              {...register("area")}
-            />
-            <ErrorMessage>{errors.area?.message}</ErrorMessage>
+            <select
+              className={`mb-1 w-full rounded-xl border ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
+              {...register("areaCode")}
+            >
+              <option value="">اختر المدينة</option>
+              {/* Placeholder option */}
+              <option value="1">جدة</option>
+              {/* city_id = 1 for Riyadh */}
+              <option value="2">المدينة المنورة</option>
+              {/* city_id = 2 for Jeddah */}
+              <option value="3">مكة المكرمة</option>
+              {/* city_id = 3 for Mecca */}
+              <option value="4">الرياض</option>
+              {/* city_id = 4 for Medina */}
+              <option value="5">القصيم</option>
+              {/* city_id = 5 for Dammam */}
+            </select>
+            <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>
           </div>
           <div className="h-12 text-start">
             <input
@@ -179,18 +182,7 @@ function Popup() {
             />
             <ErrorMessage>{errors.bathrooms?.message}</ErrorMessage>
           </div>
-          <div className="h-12 text-start">
-            <input
-              type="text"
-              placeholder="رمز المنطقة"
-              className={`mb-1 w-full rounded-xl border uppercase ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
-              {...register("areaCode")}
-              value={areaCode}
-              onChange={handleAreaCodeChange}
-            />
-            <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>
-          </div>
-          <div className="relative ">
+          <div className="relative col-span-2">
             <input
               id="fileInput"
               type="file"
@@ -211,13 +203,17 @@ function Popup() {
             ></textarea>
             <ErrorMessage>{errors.description?.message}</ErrorMessage>
           </div>
-          <Button type="submit" className="mt-5 h-12 w-8/12">
+          <Button
+            disabled={isSubmited}
+            type="submit"
+            className="mt-5 h-12 w-8/12"
+          >
             اضافة
             {isSubmited && <ReloadIcon className="mr-3 animate-spin" />}
           </Button>
         </motion.form>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
 
