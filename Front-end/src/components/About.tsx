@@ -2,7 +2,10 @@ import { SubHeading } from "@/components/SubHeading";
 
 const About = () => {
   return (
-    <div className="mx-auto max-w-5xl space-y-8 rounded-md bg-white p-5 shadow-sm">
+    <div
+      id="about-us"
+      className="mx-auto max-w-5xl space-y-8 rounded-md bg-white p-5 shadow-sm"
+    >
       <SubHeading>من نحن وماذا نقدم </SubHeading>
 
       <div className="mx-auto max-w-2xl">
