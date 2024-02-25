@@ -11,8 +11,6 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button.tsx";
 import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 
-// import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
-
 const addProductSchema = z.object({
   productName: z.string().min(1, "اسم العقار مطلوب"),
   price: z.string().min(1, "السعر مطلوب"),
@@ -184,17 +182,6 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
             />
             <ErrorMessage>{errors.bathrooms?.message}</ErrorMessage>
           </div>
-          {/*<div className="h-12 text-start">*/}
-          {/*  <input*/}
-          {/*    type="text"*/}
-          {/*    placeholder="رمز المنطقة"*/}
-          {/*    className={`mb-1 w-full rounded-xl border uppercase ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}*/}
-          {/*    {...register("areaCode")}*/}
-          {/*    value={areaCode}*/}
-          {/*    onChange={handleAreaCodeChange}*/}
-          {/*  />*/}
-          {/*  <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>*/}
-          {/*</div>*/}
           <div className="relative col-span-2">
             <input
               id="fileInput"
