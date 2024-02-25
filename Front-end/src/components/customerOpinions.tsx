@@ -116,12 +116,12 @@ const customers= CustomersData.map((c)=>{
         
       </div>
       <div className=" h-36 relative">
-         <Icons.beforCotation />
+         <Icons.beforeQuotation />
       <p className= 'pt-5 text-[#3E3E3E] text-xl'>
         {c.comment}
       </p>
       <div className=" absolute right-1 bottom-0 ">
-        < Icons.afterCotation />
+        < Icons.afterQuotation />
       </div>
       
       </div>
@@ -149,16 +149,16 @@ export function CustomerOpinions() {
 
 
   return (
-    <section className=" w-full flex justify-center flex-col items-center gap-8">
-      <Heading className=" pb-16">
+    <section className=" w-full flex justify-center flex-col items-center gap-8 space-y-8">
+      <SubHeading >
         آراء العملاء
-      </Heading>
+      </SubHeading>
 
       {/* the opacity effect */}
-      <div className=" -translate-y-3 h-[180px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
+      <div className=" -translate-y-12 h-[150px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
     </div>
 
-    <div className="  w-4/5 ">
+    <div className=" relative w-4/5 ">
     
       <Slider
         asNavFor={nav1}
@@ -167,35 +167,38 @@ export function CustomerOpinions() {
         focusOnSelect={true}
         autoplay={true}
         autoplaySpeed={4000}
-        className=" relative"
       >
       
         
         <div>
          {/* moved it a little so every image align with its comment */}
-          <img src={customer1} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer1} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
         </div>
         <div>
-          <img src={customer2}  className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-20"></img>
+          <img src={customer2}  className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-[4rem]"></img>
         </div>
         <div>
-          <img src={customer3} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer3} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
         </div>
         <div>
-          <img src={customer4} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer4} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
         </div>
         <div>
-          <img src={customer5} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-20"></img>
+          <img src={customer5} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
         </div>
       </Slider>
-      <Slider asNavFor={nav2} ref={(slider) => (sliderRef1.current = slider)}>
+      <Slider 
+        asNavFor={nav2}
+        ref={(slider) => (sliderRef1.current = slider)}
+        className=" cursor-grab"
+        >
         {customers}
       </Slider>
 
-      <button className="absolute left-5 bottom-1/2 z-20" onClick={() => sliderRef2?.current?.slickPrev()}>
+      <button className="absolute -left-11 top-1/3 z-20" onClick={() => sliderRef2?.current?.slickPrev()}>
         <Icons.blueArrowNext/>
       </button>
-      <button className="  absolute right-5 bottom-1/2 z-20" onClick={() => sliderRef2?.current?.slickNext()}>
+      <button className="  absolute -right-11 top-1/3 z-20" onClick={() => sliderRef2?.current?.slickNext()}>
       <Icons.blueArrow/>
       </button>
 
