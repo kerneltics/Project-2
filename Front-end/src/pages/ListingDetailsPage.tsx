@@ -12,7 +12,7 @@ export const ListingDetailsPage = () => {
   // TODO: ⛔ Implement error handling and loading skelton
 
   if (isLoading) {
-    return <Loader className=" size-12 animate-spin" />;
+    return <Loader className=" mx-auto size-12 animate-spin " />;
   }
 
   if (!listing || isError) {
@@ -22,7 +22,7 @@ export const ListingDetailsPage = () => {
 
   return (
     <div>
-      <OneReal />
+      <OneReal listing={listing} />
     </div>
   );
 };
