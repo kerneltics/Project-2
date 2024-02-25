@@ -82,7 +82,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
       formData.append("image", selectedImage!, selectedImage?.name);
       formData.append("name", data.productName);
       formData.append("price", data.price);
-      formData.append("area", Number(data.area));
+      formData.append("area", data.area);
       formData.append("number_of_rooms", data.rooms);
       formData.append("number_of_bathrooms", data.bathrooms);
       formData.append("city_id", data.areaCode);
