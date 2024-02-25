@@ -27,7 +27,9 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
 
   return (
     <article className="flex min-w-[250px] max-w-[400px] flex-col rounded-3xl shadow-sm">
-      <img src={image} className=" rounded-t-2xl" />
+      <div className=" ">
+        <img src={image} className=" rounded-t-2xl object-cover aspect-[16/14]" />
+      </div>
       <div className="space-y-4  rounded-b-2xl bg-white p-5">
         <div className="flex items-center justify-between">
           <h4 className="text-xl font-medium">{name}</h4>

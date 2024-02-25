@@ -13,7 +13,7 @@ export const AdminPage = () => {
   const { data: listings, isLoading, isError, error } = useFeaturedListings();
 
   if (isLoading) {
-    return <Loader className=" mx-auto size-12 animate-spin " />;
+    return <Loader className=" mx-auto size-12 min-h-[70dvh] animate-spin " />;
   }
 
   if (isError || !listings) {
@@ -24,7 +24,6 @@ export const AdminPage = () => {
   return (
     <div className="p-4 py-8">
       <ProtectedRoute>
-        <h1>Admin page</h1>
         <AddProduct />
         <div className="flex flex-col items-center space-y-8">
           <SubHeading> العقارات</SubHeading>
@@ -33,11 +32,13 @@ export const AdminPage = () => {
             {listings.map((listing) => (
               <ListingCard
                 listing={listing}
-                render={(/*id*/) => (
-                  <div className="">
-                    <Icons.delete className="w-6 cursor-pointer " />
-                  </div>
-                )}
+                render={
+                  (/*id*/) => (
+                    <div className="mr-auto block">
+                      <Icons.delete className=" w-6 cursor-pointer" />
+                    </div>
+                  )
+                }
               />
             ))}
           </div>

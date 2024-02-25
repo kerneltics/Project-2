@@ -67,7 +67,7 @@ const MobileNavbar = () => (
             {ROUTES.map(({ path, label }) => {
               return (
                 <li className={linksAnimation} key={label}>
-                  <a  href={path}>{label}</a>
+                  <a href={path}>{label}</a>
                 </li>
               );
             })}
