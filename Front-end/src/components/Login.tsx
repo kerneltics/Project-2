@@ -23,9 +23,9 @@ const loginSchema = z.object({
 type LoginSchema = z.infer<typeof loginSchema>;
 
 function Login() {
+  const navigate = useNavigate();
   // A state to check if the form is submited
   const [isSubmited, setIsSubmited] = useState(false);
-  const navigate = useNavigate();
 
   // The react-hook-form hook
   const {

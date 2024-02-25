@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
-// import axios from "axios";
+import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -34,17 +34,16 @@ type AddProductSchema = z.infer<typeof addProductSchema>;
 function AddProduct() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <AnimatePresence mode="wait">
-      <div>
-        <Button onClick={() => setIsOpen(true)}>اضافة منتج</Button>
-
-        {isOpen && <Popup />}
-      </div>
-    </AnimatePresence>
+    <div>
+      <Button onClick={() => setIsOpen(true)}>اضافة منتج</Button>
+      <AnimatePresence mode="wait">
+        {isOpen && <Popup setIsOpen={setIsOpen} />}
+      </AnimatePresence>
+    </div>
   );
 }
 
-function Popup() {
+function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
   const [isSubmited, setIsSubmited] = useState(false);
   const [areaCode, setAreaCode] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -68,9 +67,8 @@ function Popup() {
 
   // Function to handle the controlled input change
   const handleAreaCodeChange = (e: any) => {
-    const inputValue = e.target.value.toUpperCase(); // Convert to uppercase
+    const inputValue = e.target.value.toUpperCase();
     if (/^[A-Z]{0,2}$/.test(inputValue)) {
-      // Directly enforce the pattern
       setAreaCode(inputValue);
     }
   };
@@ -81,18 +79,25 @@ function Popup() {
     try {
       const formData = new FormData();
       formData.append("image", selectedImage!, selectedImage?.name);
+      formData.append("name", data.productName);
+      formData.append("price", data.price);
+      formData.append("area", data.area);
+      formData.append("number_of_rooms", data.rooms);
+      formData.append("number_of_bathrooms", data.bathrooms);
+      formData.append("city_id", data.areaCode);
+      formData.append("description", data.description);
 
-      // const res = await axios.post(
-      //   "https://www.kerneltics.com/api/createProduct",
-      //   formData, // Change this to formData
-      //   {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   },
-      // );
-      console.log(formData);
-      console.log(data);
+      const response = await axios.post(
+        "https://www.kerneltics.com/api/createProduct",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
+      );
+
+      console.log(response.data);
       reset();
       setIsSubmited(false);
       toast.success("تم اضافة العقار بنجاح");
@@ -104,32 +109,34 @@ function Popup() {
   });
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 1] }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed left-0 top-0 z-50 h-screen w-screen bg-black bg-opacity-50"
-    >
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1] }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        onClick={() => setIsOpen(false)}
+        className="fixed left-0 top-0 z-30 h-screen w-screen bg-black bg-opacity-50"
+      ></motion.div>
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 top-0 m-auto h-4/5 w-8/12 rounded-2xl bg-white"
+        exit={{ scale: [1, 0], opacity: [1, 0], transition: { duration: 0.3 } }}
+        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto h-4/5 w-8/12 rounded-2xl bg-white"
       >
         <motion.h1
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: [0, 1] }}
-          exit={{ x: 100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: [0, 1] }}
+          exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           className="mt-10 text-center text-2xl font-bold"
         >
           اضافة عقار
         </motion.h1>
         <motion.form
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: [0, 1] }}
-          exit={{ x: 100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: [0, 1] }}
+          exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           onSubmit={submit}
           className="mx-auto mt-14 grid w-8/12 grid-cols-2 grid-rows-7  items-center justify-center gap-x-3 gap-y-3"
@@ -211,13 +218,17 @@ function Popup() {
             ></textarea>
             <ErrorMessage>{errors.description?.message}</ErrorMessage>
           </div>
-          <Button type="submit" className="mt-5 h-12 w-8/12">
+          <Button
+            disabled={isSubmited}
+            type="submit"
+            className="mt-5 h-12 w-8/12"
+          >
             اضافة
             {isSubmited && <ReloadIcon className="mr-3 animate-spin" />}
           </Button>
         </motion.form>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
 
