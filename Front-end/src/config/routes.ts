@@ -9,10 +9,10 @@ export const ROUTES = [
   },
   {
     label: "خدماتنا",
-    path: "/our-services",
+    path: "#our-services",
   },
   {
     label: "أفضل العقارات",
-    path: "/best-real-estate",
+    path: "#best-real-estate",
   },
 ] as const;
