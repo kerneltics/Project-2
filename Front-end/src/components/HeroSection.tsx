@@ -4,7 +4,7 @@ import { Heading } from "@/components/Heading";
 
 export const HeroSection = () => {
   return (
-    <div className="h-[760px] md:h-[500px]">
+    <div className="h-[760px] pt-[60px] md:h-[500px]">
       <div className="absolute inset-0 -z-10 h-[760px] bg-hero bg-cover bg-center md:top-28  md:h-[500px]" />
       <Heading className="mt-[80px] text-center text-[20px] md:mt-[40px] md:pt-[20px] md:text-[40px]">
         استثمر في مستقبلك مع أفضل عروض العقارات في السعودية والخليج!
