@@ -14,7 +14,7 @@ export const FeaturedListings = () => {
     // TODO: ⛔ Implement error handling ⛔
     return <pre dir="ltr">{JSON.stringify(error, null, 2)}</pre>;
   }
-
+  console.log({ data: listings });
   return (
     <div id="best-real-estate" className="flex flex-col items-center space-y-8">
       <SubHeading>أفضل العقارات</SubHeading>

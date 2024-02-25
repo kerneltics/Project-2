@@ -26,7 +26,9 @@ function AddProduct() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>اضافة منتج</Button>
+      <Button className="mr-auto block" onClick={() => setIsOpen(true)}>
+        اضافة منتج
+      </Button>
       <AnimatePresence mode="wait">
         {isOpen && <Popup setIsOpen={setIsOpen} />}
       </AnimatePresence>
