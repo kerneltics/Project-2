@@ -65,6 +65,18 @@ export const api = async ({
     return json.result;
   }
 
+  if (response.status === 401) {
+    throw new Error("الرجاء تسجيل الدخول.");
+  }
+
+  if (response.status === 404) {
+    throw new Error("لم يتم العثور على العقار الذي تبحث عنه. ");
+  }
+
+  if (response.status >= 500) {
+    throw new Error("حدث خطأ ما في الخادم. حاول مرة اخرى.");
+  }
+
   const errorMessage = json.message;
 
   throw new Error(errorMessage);
