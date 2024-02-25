@@ -16,16 +16,9 @@ import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 const addProductSchema = z.object({
   productName: z.string().min(1, "اسم العقار مطلوب"),
   price: z.string().min(1, "السعر مطلوب"),
-  area: z.string().min(1, "المنطقة مطلوبة"),
   rooms: z.string().min(1, "عدد الغرف مطلوب"),
   bathrooms: z.string().min(1, "عدد دورات المياه مطلوب"),
-  areaCode: z
-    .string()
-    .min(1, "رمز المنطقة مطلوب")
-    .regex(
-      /^[A-Z]{1,2}$/,
-      "رمز المنطقة يجب ان يكون حروف كبيرة فقط ولا يزيد عن حرفين",
-    ),
+  areaCode: z.string(),
   description: z.string().min(1, "الوصف مطلوب"),
 });
 
@@ -45,7 +38,6 @@ function AddProduct() {
 
 function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
   const [isSubmited, setIsSubmited] = useState(false);
-  const [areaCode, setAreaCode] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   // Function to handle file selection
@@ -65,14 +57,6 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
     resolver: zodResolver(addProductSchema),
   });
 
-  // Function to handle the controlled input change
-  const handleAreaCodeChange = (e: any) => {
-    const inputValue = e.target.value.toUpperCase();
-    if (/^[A-Z]{0,2}$/.test(inputValue)) {
-      setAreaCode(inputValue);
-    }
-  };
-
   // Adjust your submit function to include the file in the form data
   const submit = handleSubmit(async (data) => {
     setIsSubmited(true);
@@ -81,8 +65,8 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
       const token = localStorage.getItem("token");
       formData.append("image", selectedImage!, selectedImage?.name);
       formData.append("name", data.productName);
+      formData.append("area", data.areaCode);
       formData.append("price", data.price);
-      formData.append("area", data.area);
       formData.append("number_of_rooms", data.rooms);
       formData.append("number_of_bathrooms", data.bathrooms);
       formData.append("city_id", data.areaCode);
@@ -103,6 +87,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
       reset();
       setIsSubmited(false);
       toast.success("تم اضافة العقار بنجاح");
+      setIsOpen(false);
     } catch (error) {
       console.error(error);
       setIsSubmited(false);
@@ -162,13 +147,24 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
             <ErrorMessage>{errors.price?.message}</ErrorMessage>
           </div>
           <div className="h-12 text-start">
-            <input
-              type="text"
-              placeholder="المنطقة"
-              className={`mb-1 w-full rounded-xl border ${errors.area?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
-              {...register("area")}
-            />
-            <ErrorMessage>{errors.area?.message}</ErrorMessage>
+            <select
+              className={`mb-1 w-full rounded-xl border ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
+              {...register("areaCode")}
+            >
+              <option value="">اختر المدينة</option>
+              {/* Placeholder option */}
+              <option value="1">جدة</option>
+              {/* city_id = 1 for Riyadh */}
+              <option value="2">المدينة المنورة</option>
+              {/* city_id = 2 for Jeddah */}
+              <option value="3">مكة المكرمة</option>
+              {/* city_id = 3 for Mecca */}
+              <option value="4">الرياض</option>
+              {/* city_id = 4 for Medina */}
+              <option value="5">القصيم</option>
+              {/* city_id = 5 for Dammam */}
+            </select>
+            <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>
           </div>
           <div className="h-12 text-start">
             <input
@@ -188,18 +184,18 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
             />
             <ErrorMessage>{errors.bathrooms?.message}</ErrorMessage>
           </div>
-          <div className="h-12 text-start">
-            <input
-              type="text"
-              placeholder="رمز المنطقة"
-              className={`mb-1 w-full rounded-xl border uppercase ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
-              {...register("areaCode")}
-              value={areaCode}
-              onChange={handleAreaCodeChange}
-            />
-            <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>
-          </div>
-          <div className="relative ">
+          {/*<div className="h-12 text-start">*/}
+          {/*  <input*/}
+          {/*    type="text"*/}
+          {/*    placeholder="رمز المنطقة"*/}
+          {/*    className={`mb-1 w-full rounded-xl border uppercase ${errors.areaCode?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}*/}
+          {/*    {...register("areaCode")}*/}
+          {/*    value={areaCode}*/}
+          {/*    onChange={handleAreaCodeChange}*/}
+          {/*  />*/}
+          {/*  <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>*/}
+          {/*</div>*/}
+          <div className="relative col-span-2">
             <input
               id="fileInput"
               type="file"
