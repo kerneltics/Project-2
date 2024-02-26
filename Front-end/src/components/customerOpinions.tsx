@@ -100,9 +100,9 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
 
 
 
-const customers= CustomersData.map((c)=>{
+const customers= CustomersData.map((c, i)=>{
   return(
-    <div className=" text-center ">
+    <div key={i} className=" text-center ">
       <div className=" pb-2">
         <h2 className=" font-medium py-2  text-2xl text-black">{c.customerName}</h2>
         <div className=" flex  justify-center  items-center">

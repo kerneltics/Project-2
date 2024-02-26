@@ -800,11 +800,11 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
   whiteArrow: ({ className = "", ...props }: LucideProps) => (
     <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g filter="url(#filter0_d_313_364)">
-    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 74 30)" fill="white" shape-rendering="crispEdges"/>
-    <path d="M56.0996 55.8829L50.2329 49.9995L56.0996 44.1162" stroke="#171717" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 74 30)" fill="white" shapeRendering="crispEdges"/>
+    <path d="M56.0996 55.8829L50.2329 49.9995L56.0996 44.1162" stroke="#171717" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     </g>
     <defs>
-    <filter id="filter0_d_313_364" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="filter0_d_313_364" x="0" y="0" width="108" height="108" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
     <feOffset dy="4"/>
@@ -820,12 +820,12 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
   blueArrow: ({ className = "", ...props }: LucideProps) => (
     <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g filter="url(#filter0_d_313_365)">
-    <rect x="4" width="40" height="40" rx="20" fill="#4883FB" shape-rendering="crispEdges"/>
-    <path d="M21.9004 25.8829L27.7671 19.9995L21.9004 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="4" width="40" height="40" rx="20" fill="#4883FB" shapeRendering="crispEdges"/>
+    <path d="M21.9004 25.8829L27.7671 19.9995L21.9004 14.1162" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     </g>
     <defs>
-    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
     <feOffset dy="4"/>
     <feGaussianBlur stdDeviation="2"/>
@@ -841,12 +841,12 @@ m-178 -293 c0 -11 -11 -15 -40 -15 -29 0 -40 4 -40 15 0 11 11 15 40 15 29 0
   blueArrowNext: ({ className = "", ...props }: LucideProps) => (
     <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g filter="url(#filter0_d_313_365)">
-    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 44 0)" fill="#4883FB" shape-rendering="crispEdges"/>
-    <path d="M26.0996 25.8829L20.2329 19.9995L26.0996 14.1162" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 44 0)" fill="#4883FB" shapeRendering="crispEdges"/>
+    <path d="M26.0996 25.8829L20.2329 19.9995L26.0996 14.1162" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     </g> 
     <defs>
-    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <filter id="filter0_d_313_365" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
     <feOffset dy="4"/>
     <feGaussianBlur stdDeviation="2"/>
