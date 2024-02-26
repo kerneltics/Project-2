@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 import { ROUTES } from "@/config/routes";
-
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
+import {  useState } from "react";
 const linksAnimation =
-  "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
+"hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
 export const Header = () => {
+  const [top, setTop] = useState("-365px");
+  const openNavbar = () => setTop("15px");
+const closeNavbar = () => setTop("-365px");
   return (
     <header className="w-[100%] bg-white">
       <DesktopNavbar />
-      <MobileNavbar />
+      <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
   );
 };
@@ -38,14 +39,18 @@ const DesktopNavbar = () => (
     </a>
   </nav>
 );
-
-const MobileNavbar = () => (
+interface MobileNavbarProps {
+  top: string;
+  close: any;
+  open: any;
+}
+const MobileNavbar = ({top, close, open}: MobileNavbarProps) => (
   <div className="container flex w-full items-center justify-between md:hidden">
     <Link to="/">
       <Icons.textLogo className="size-[70px]" />
     </Link>
-    <Sheet>
-      <SheetTrigger>
+    <div>
+      <button onClick={() => {open()}}>
         <svg
           width="30"
           height="30"
@@ -60,14 +65,15 @@ const MobileNavbar = () => (
             clipRule="evenodd"
           ></path>
         </svg>
-      </SheetTrigger>
-      <SheetContent className="w-[100%] pt-10" side={"top"}>
-        <nav className="space-y-6">
+      </button>
+      <div className="w-[100%]">
+        <nav style={{top}} className={`container absolute right-0 w-[100%] bg-white ease-out transition-all duration-[400ms]`}>
+          <button onClick={() => {close()}} className="mr-auto block text-[25px]">X</button>
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
                 <li className={linksAnimation} key={label}>
-                  <a href={path}>{label}</a>
+                  <a onClick={() => {close()}} href={path}>{label}</a>
                 </li>
               );
             })}
@@ -81,7 +87,7 @@ const MobileNavbar = () => (
             </a>
           </div>
         </nav>
-      </SheetContent>
-    </Sheet>
+      </div>
+    </div>
   </div>
 );
