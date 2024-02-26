@@ -16,7 +16,7 @@ export const FeaturedListings = () => {
   }
   console.log({ data: listings });
   return (
-    <div id="best-real-estate" className="flex flex-col items-center space-y-8">
+    <div id="best-real-estate" className="container flex flex-col items-center space-y-8">
       <SubHeading>أفضل العقارات</SubHeading>
 
       <div className="flex flex-wrap items-center justify-center gap-6">

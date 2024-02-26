@@ -7,9 +7,11 @@ import formPicture from "/images/form.png";
 // The main component
 function ContactUs() {
   return (
-    <div id="contact-us" className="w-full rounded-3xl bg-white lg:flex">
-      <FormPicture />
-      <FormSection />
+    <div className="container">
+      <div id="contact-us" className="w-full rounded-3xl bg-white lg:flex">
+        <FormPicture />
+        <FormSection />
+      </div>
     </div>
   );
 }
