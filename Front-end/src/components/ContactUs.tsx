@@ -7,7 +7,7 @@ import formPicture from "/images/form.png";
 // The main component
 function ContactUs() {
   return (
-    <div className="w-full rounded-3xl bg-white lg:flex">
+    <div id="contact-us" className="w-full rounded-3xl bg-white lg:flex">
       <FormPicture />
       <FormSection />
     </div>

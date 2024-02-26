@@ -30,12 +30,12 @@ const DesktopNavbar = () => (
         );
       })}
     </ul>
-    <Link
+    <a
       className="rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all duration-400 ease-out hover:bg-primary hover:text-white"
-      to=""
+      href="#contact-us"
     >
       تواصل معنا
-    </Link>
+    </a>
   </nav>
 );
 
@@ -73,12 +73,12 @@ const MobileNavbar = () => (
             })}
           </ul>
           <div>
-            <Link
+            <a
               className="duration-[400ms] w-full rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
-              to=""
+              href="#contact-us"
             >
               تواصل معنا
-            </Link>
+            </a>
           </div>
         </nav>
       </SheetContent>
