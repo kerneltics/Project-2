@@ -1,16 +1,29 @@
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 import { ROUTES } from "@/config/routes";
-import {  useState } from "react";
+
 const linksAnimation =
-"hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
+  "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
+const headerE: null | any = document.querySelector("#headerE");
+const headerFixed = () => {
+  window.scrollY != headerE.scrollTop
+  ? headerE.classList.add("fixed")
+  : headerE.classList.remove("fixed");
+};
+window.onscroll = () => headerFixed();
+
 export const Header = () => {
   const [top, setTop] = useState("-365px");
   const openNavbar = () => setTop("15px");
-const closeNavbar = () => setTop("-365px");
+  const closeNavbar = () => setTop("-365px");
+  useEffect(() => {
+    closeNavbar();
+  }, []);
   return (
-    <header className="w-[100%] bg-white">
+    <header id="headerE" className="z-50 w-[100%] bg-white">
       <DesktopNavbar />
       <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
@@ -44,13 +57,17 @@ interface MobileNavbarProps {
   close: any;
   open: any;
 }
-const MobileNavbar = ({top, close, open}: MobileNavbarProps) => (
+const MobileNavbar = ({ top, close, open }: MobileNavbarProps) => (
   <div className="container flex w-full items-center justify-between md:hidden">
     <Link to="/">
       <Icons.textLogo className="size-[70px]" />
     </Link>
     <div>
-      <button onClick={() => {open()}}>
+      <button
+        onClick={() => {
+          open();
+        }}
+      >
         <svg
           width="30"
           height="30"
@@ -67,18 +84,36 @@ const MobileNavbar = ({top, close, open}: MobileNavbarProps) => (
         </svg>
       </button>
       <div className="w-[100%]">
-        <nav style={{top}} className={`container absolute right-0 w-[100%] bg-white ease-out transition-all duration-[400ms]`}>
-          <button onClick={() => {close()}} className="mr-auto block text-[25px]">X</button>
+        <nav
+          style={{ top }}
+          className={`duration-[400ms] container absolute right-0 w-[100%] bg-white transition-all ease-out`}
+        >
+          <button
+            onClick={() => {
+              close();
+            }}
+            className="mr-auto block text-[25px]"
+          >
+            X
+          </button>
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
-                <li className={linksAnimation} key={label}>
-                  <a onClick={() => {close()}} href={path}>{label}</a>
+                <li key={label}>
+                  <a
+                    className={linksAnimation}
+                    onClick={() => {
+                      close();
+                    }}
+                    href={path}
+                  >
+                    {label}
+                  </a>
                 </li>
               );
             })}
           </ul>
-          <div>
+          <div className="my-5">
             <a
               className="duration-[400ms] w-full rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
               href="#contact-us"
