@@ -16,7 +16,7 @@ const addProductSchema = z.object({
   price: z.string().min(1, "السعر مطلوب"),
   rooms: z.string().min(1, "عدد الغرف مطلوب"),
   bathrooms: z.string().min(1, "عدد دورات المياه مطلوب"),
-  areaCode: z.string(),
+  areaCode: z.string().min(1, "المدينة مطلوبة"),
   description: z.string().min(1, "الوصف مطلوب"),
 });
 
@@ -109,7 +109,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: [1, 0], opacity: [1, 0], transition: { duration: 0.3 } }}
-        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto h-4/5 w-8/12 rounded-2xl bg-white"
+        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto h-[90%] w-8/12 rounded-2xl bg-white"
       >
         <motion.h1
           initial={{ y: 100, opacity: 0 }}
@@ -126,7 +126,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           onSubmit={submit}
-          className="mx-auto mt-14 grid w-8/12 grid-cols-2 grid-rows-7  items-center justify-center gap-x-3 gap-y-3"
+          className="mx-auto mt-14 grid h-4/6 w-8/12 grid-cols-2 grid-rows-7 items-center  justify-center gap-x-3 gap-y-3"
         >
           <div className="col-span-2 h-12 text-start">
             <input
@@ -152,17 +152,11 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
               {...register("areaCode")}
             >
               <option value="">اختر المدينة</option>
-              {/* Placeholder option */}
               <option value="1">جدة</option>
-              {/* city_id = 1 for Riyadh */}
               <option value="2">المدينة المنورة</option>
-              {/* city_id = 2 for Jeddah */}
               <option value="3">مكة المكرمة</option>
-              {/* city_id = 3 for Mecca */}
               <option value="4">الرياض</option>
-              {/* city_id = 4 for Medina */}
               <option value="5">القصيم</option>
-              {/* city_id = 5 for Dammam */}
             </select>
             <ErrorMessage>{errors.areaCode?.message}</ErrorMessage>
           </div>
@@ -192,7 +186,10 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
               accept="image/*"
               onChange={handleFileChange}
             />
-            <Button className="h-12 w-full" variant="secondary">
+            <Button
+              className="h-12 w-full"
+              variant={selectedImage ? "default" : "secondary"}
+            >
               اختيار صورة
             </Button>
           </div>
