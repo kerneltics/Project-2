@@ -7,23 +7,22 @@ import { ROUTES } from "@/config/routes";
 
 const linksAnimation =
   "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
-const headerE: null | any = document.querySelector("#headerE");
-const headerFixed = () => {
-  window.scrollY != headerE.scrollTop
-  ? headerE.classList.add("fixed")
-  : headerE.classList.remove("fixed");
-};
-window.onscroll = () => headerFixed();
 
 export const Header = () => {
   const [top, setTop] = useState("-365px");
+  const [fixed, setFixed] = useState("");
   const openNavbar = () => setTop("15px");
   const closeNavbar = () => setTop("-365px");
   useEffect(() => {
+    window.onscroll = () => {
+      window.scrollY > 20 ? setFixed("fixed") : setFixed(" ");
+    };
     closeNavbar();
   }, []);
   return (
-    <header id="headerE" className="z-50 w-[100%] bg-white">
+    <header
+      className={`z-50 w-[100%] ${fixed} bg-white`}
+    >
       <DesktopNavbar />
       <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
