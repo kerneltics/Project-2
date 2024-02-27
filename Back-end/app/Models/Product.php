@@ -12,7 +12,26 @@ class Product extends Model
     protected $fillable = [
         'name',
         'price',
-        'description',
         'image',
+        'description',
+        'cover',
+        'number_of_rooms',
+        'number_of_bathrooms',
+        'area',
+        'user_id',
+        'city_id'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
 }

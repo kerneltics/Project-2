@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->admin > 0 ? true : false;
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

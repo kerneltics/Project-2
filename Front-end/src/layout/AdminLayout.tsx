@@ -2,38 +2,35 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 
-import { Container } from "@/components/Container";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export const AdminLayout = () => {
   return (
-    <Container>
+    <div className="container">
       <Header />
       <main className="flex-1">
         <Outlet />
       </main>
-    </Container>
+    </div>
   );
 };
 
 const Header = () => {
-  // NOTE: This is temporary until we implement authentication.
   const { pathname } = useLocation();
-  const isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <header className="flex w-full items-center justify-between">
-      {isLoggedIn && pathname === "admin" ? (
-        <Button variant="secondary" onClick={() => {}}>
+      {isLoggedIn && pathname === "/admin" && (
+        <Button
+          variant="destructive"
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.href = "/login";
+          }}
+        >
           تسجيل الخروج
         </Button>
-      ) : (
-        <Link
-          to={"/login"}
-          className={buttonVariants({ variant: "secondary" })}
-        >
-          الصفحة الرئيسية
-        </Link>
       )}
 
       <Link to="/" className="md:mx-auto">

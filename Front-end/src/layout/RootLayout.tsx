@@ -1,15 +1,17 @@
 import { Outlet } from "react-router-dom";
 
-import { Container } from "@/components/Container";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+
 
 export const RootLayout = () => {
   return (
-    <Container className="flex flex-col">
-      {/* Add header component below */}
+    <div className="flex min-h-screen flex-col">
+      <Header />
       <main className="flex-1">
         <Outlet />
       </main>
-      {/* Add footer component below */}
-    </Container>
+      <Footer />
+    </div>
   );
 };
