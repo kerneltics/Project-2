@@ -9,19 +9,13 @@ import { cn } from "@/lib/utils";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import Spinner from "@/components/ui/Spinner.tsx";
 
 type ListingCardProps = {
   listing: Listing;
   render?: (id: number) => React.ReactNode;
-  isSubmitting?: boolean;
 };
 
-export const ListingCard = ({
-  listing,
-  render,
-  isSubmitting,
-}: ListingCardProps) => {
+export const ListingCard = ({ listing, render }: ListingCardProps) => {
   const {
     id,
     name,
@@ -66,11 +60,7 @@ export const ListingCard = ({
         </div>
         <div className="flex items-center">
           {render ? (
-            isSubmitting && id === id ? (
-              <Spinner className="mr-auto" />
-            ) : (
-              render(id)
-            )
+            render(id)
           ) : (
             <div className="flex w-full items-center justify-between gap-2">
               <Link to={`listing/${id}`} className={cn(buttonVariants())}>

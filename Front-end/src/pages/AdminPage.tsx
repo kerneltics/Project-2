@@ -23,10 +23,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import Spinner from "@/components/ui/Spinner.tsx";
 
 export const AdminPage = () => {
   const { data: listings, isLoading, isError, error } = useFeaturedListings();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [clickedID, setClickedID] = useState<number | null>(null);
 
   if (isLoading) {
     return <Loader className=" mx-auto size-12 min-h-[70dvh] animate-spin " />;
@@ -40,9 +42,10 @@ export const AdminPage = () => {
   const render = (id: number) => {
     const handleDelete = async () => {
       setIsSubmitting(true);
+      setClickedID(id);
       try {
         const res = await axios.delete(
-          `https://www.kerneltics.com/api/deleteProduct/${id}`,
+          `https://www.kerneltics.com/api/delete-listing/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -52,7 +55,9 @@ export const AdminPage = () => {
         if (res.status === 200) {
           toast.success("تم حذف العقار بنجاح");
           setIsSubmitting(false);
-          location.reload();
+          setTimeout(() => {
+            location.reload();
+          }, 800);
         } else if (res.status === 401) {
           toast.error("غير مصرح لك بالقيام بهذه العملية");
           setIsSubmitting(false);
@@ -67,9 +72,13 @@ export const AdminPage = () => {
       <div className="mr-auto block" dir="rtl">
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <div>
-              <Icons.delete className="w-6 cursor-pointer" />
-            </div>
+            {isSubmitting && id == clickedID ? (
+              <Spinner className="mr-auto" />
+            ) : (
+              <div>
+                <Icons.delete className="w-6 cursor-pointer" />
+              </div>
+            )}
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -100,11 +109,7 @@ export const AdminPage = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             {listings.map((listing) => (
-              <ListingCard
-                listing={listing}
-                render={render}
-                isSubmitting={isSubmitting}
-              />
+              <ListingCard listing={listing} render={render} />
             ))}
           </div>
         </div>
