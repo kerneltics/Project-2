@@ -15,6 +15,7 @@ const addProductSchema = z.object({
   productName: z.string().min(1, "اسم العقار مطلوب"),
   price: z.string().min(1, "السعر مطلوب"),
   rooms: z.string().min(1, "عدد الغرف مطلوب"),
+  area: z.string().min(1, "المساحة مطلوبة"),
   bathrooms: z.string().min(1, "عدد دورات المياه مطلوب"),
   areaCode: z.string().min(1, "المدينة مطلوبة"),
   description: z.string().min(1, "الوصف مطلوب"),
@@ -27,7 +28,7 @@ function AddProduct() {
   return (
     <div>
       <Button className="mr-auto block" onClick={() => setIsOpen(true)}>
-        اضافة منتج
+        اضافة عقار
       </Button>
       <AnimatePresence mode="wait">
         {isOpen && <Popup setIsOpen={setIsOpen} />}
@@ -65,7 +66,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
       const token = localStorage.getItem("token");
       formData.append("image", selectedImage!, selectedImage?.name);
       formData.append("name", data.productName);
-      formData.append("area", data.areaCode);
+      formData.append("area", data.area);
       formData.append("price", data.price);
       formData.append("number_of_rooms", data.rooms);
       formData.append("number_of_bathrooms", data.bathrooms);
@@ -109,14 +110,14 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: [1, 0], opacity: [1, 0], transition: { duration: 0.3 } }}
-        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto h-[90%] w-8/12 rounded-2xl bg-white"
+        className="fixed bottom-0 left-0 right-0 top-0 z-50 m-auto flex h-[80%] w-8/12 flex-col items-center justify-center gap-8 rounded-2xl bg-white"
       >
         <motion.h1
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: [0, 1] }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="mt-10 text-center text-2xl font-bold"
+          className=" text-center text-2xl font-bold"
         >
           اضافة عقار
         </motion.h1>
@@ -126,7 +127,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
           onSubmit={submit}
-          className="mx-auto mt-14 grid h-4/6 w-8/12 grid-cols-2 grid-rows-7 items-center  justify-center gap-x-3 gap-y-3"
+          className="mx-auto  grid h-4/6 w-8/12 grid-cols-2 grid-rows-7 items-center  justify-center gap-x-3 gap-y-3"
         >
           <div className="col-span-2 h-12 text-start">
             <input
@@ -178,7 +179,16 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
             />
             <ErrorMessage>{errors.bathrooms?.message}</ErrorMessage>
           </div>
-          <div className="relative col-span-2">
+          <div className="h-12 text-start">
+            <input
+              type="number"
+              placeholder="مساحة العقار"
+              className={`mb-1 w-full rounded-xl border ${errors.area?.message ? "border-red-400 focus:outline-red-400" : "border-gray-200 focus:outline-primary"} bg-gray-50 px-3 py-3 font-light focus:bg-white focus:outline-primary `}
+              {...register("area")}
+            />
+            <ErrorMessage>{errors.area?.message}</ErrorMessage>
+          </div>
+          <div className="relative">
             <input
               id="fileInput"
               type="file"
