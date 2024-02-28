@@ -1,17 +1,30 @@
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 import { ROUTES } from "@/config/routes";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
 const linksAnimation =
   "hover:after:w-[100%] after:content-[''] rounded-md after:absolute after:w-0 hover:bg-secondary after:bottom-0 after:right-0 after:h-[3px] p-2 transition-colors after:bg-primary after:ease-linear after:duration-400 relative";
+
 export const Header = () => {
+  const [top, setTop] = useState("-365px");
+  const [fixed, setFixed] = useState("");
+  const openNavbar = () => setTop("15px");
+  const closeNavbar = () => setTop("-365px");
+  useEffect(() => {
+    window.onscroll = () => {
+      window.scrollY > 20 ? setFixed("fixed") : setFixed(" ");
+    };
+    closeNavbar();
+  }, []);
   return (
-    <header className="bg-white">
+    <header
+      className={`z-50 w-[100%] ${fixed} bg-white`}
+    >
       <DesktopNavbar />
-      <MobileNavbar />
+      <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
   );
 };
@@ -25,27 +38,35 @@ const DesktopNavbar = () => (
       {ROUTES.map(({ path, label }) => {
         return (
           <li className={linksAnimation} key={label}>
-            <Link to={path}>{label}</Link>
+            <a href={path}>{label}</a>
           </li>
         );
       })}
     </ul>
-    <Link
+    <a
       className="rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all duration-400 ease-out hover:bg-primary hover:text-white"
-      to=""
+      href="#contact-us"
     >
       تواصل معنا
-    </Link>
+    </a>
   </nav>
 );
-
-const MobileNavbar = () => (
-  <div className="flex w-full items-center justify-between md:hidden">
+interface MobileNavbarProps {
+  top: string;
+  close: any;
+  open: any;
+}
+const MobileNavbar = ({ top, close, open }: MobileNavbarProps) => (
+  <div className="container flex w-full items-center justify-between md:hidden">
     <Link to="/">
       <Icons.textLogo className="size-[70px]" />
     </Link>
-    <Sheet>
-      <SheetTrigger>
+    <div>
+      <button
+        onClick={() => {
+          open();
+        }}
+      >
         <svg
           width="30"
           height="30"
@@ -60,28 +81,47 @@ const MobileNavbar = () => (
             clipRule="evenodd"
           ></path>
         </svg>
-      </SheetTrigger>
-      <SheetContent className="w-[100%] pt-10" side={"top"}>
-        <nav className="space-y-6">
+      </button>
+      <div className="w-[100%]">
+        <nav
+          style={{ top }}
+          className={`duration-[400ms] container absolute right-0 w-[100%] bg-white transition-all ease-out`}
+        >
+          <button
+            onClick={() => {
+              close();
+            }}
+            className="mr-auto block text-[25px]"
+          >
+            X
+          </button>
           <ul className="flex flex-col gap-4 font-bold">
             {ROUTES.map(({ path, label }) => {
               return (
-                <li className={linksAnimation} key={label}>
-                  <Link to={path}>{label}</Link>
+                <li key={label}>
+                  <a
+                    className={linksAnimation}
+                    onClick={() => {
+                      close();
+                    }}
+                    href={path}
+                  >
+                    {label}
+                  </a>
                 </li>
               );
             })}
           </ul>
-          <div>
-            <Link
+          <div className="my-5">
+            <a
               className="duration-[400ms] w-full rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
-              to=""
+              href="#contact-us"
             >
               تواصل معنا
-            </Link>
+            </a>
           </div>
         </nav>
-      </SheetContent>
-    </Sheet>
+      </div>
+    </div>
   </div>
 );

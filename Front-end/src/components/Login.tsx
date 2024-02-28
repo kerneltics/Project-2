@@ -23,9 +23,9 @@ const loginSchema = z.object({
 type LoginSchema = z.infer<typeof loginSchema>;
 
 function Login() {
+  const navigate = useNavigate();
   // A state to check if the form is submited
   const [isSubmited, setIsSubmited] = useState(false);
-  const navigate = useNavigate();
 
   // The react-hook-form hook
   const {
@@ -60,7 +60,7 @@ function Login() {
   });
 
   return (
-    <div className="mx-auto mt-20 flex w-full flex-col justify-center gap-x-10 rounded-3xl bg-white shadow-2xl md:h-[43rem] md:w-11/12 md:flex-row lg:w-8/12">
+    <div className="mx-auto mt-16 flex w-full flex-col justify-center gap-x-10 rounded-3xl bg-white shadow-2xl md:h-[43rem] md:w-11/12 md:flex-row lg:w-8/12">
       <div className="order-2 flex w-full flex-col justify-center p-7 md:order-1 md:w-1/2">
         <div>
           <h2 className="mb-4 text-right text-3xl font-bold">
@@ -98,11 +98,11 @@ function Login() {
           </div>
         </form>
       </div>
-      <div className="order-1 w-full -translate-x-4 -translate-y-4 md:order-2 md:w-1/2 md:translate-x-7 md:translate-y-7">
+      <div className="order-1 w-full p-4 md:order-2 md:w-1/2">
         <img
           src="../../public/images/loginPageImage.jpg"
           alt="login page"
-          className="h-full w-full rounded-xl object-cover shadow-xl"
+          className="h-full w-full rounded-2xl object-cover shadow-xl"
         />
       </div>
     </div>
