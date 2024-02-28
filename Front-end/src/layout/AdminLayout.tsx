@@ -1,4 +1,5 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 
@@ -16,6 +17,7 @@ export const AdminLayout = () => {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const isLoggedIn = localStorage.getItem("token");
 
@@ -26,7 +28,8 @@ const Header = () => {
           variant="destructive"
           onClick={() => {
             localStorage.removeItem("token");
-            window.location.href = "/login";
+            navigate("/login");
+            toast.success("تم تسجيل الخروج بنجاح");
           }}
         >
           تسجيل الخروج
