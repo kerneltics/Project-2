@@ -20,9 +20,7 @@ export const Header = () => {
     closeNavbar();
   }, []);
   return (
-    <header
-      className={`z-50 w-[100%] ${fixed} bg-white`}
-    >
+    <header className={`z-50 w-[100%] ${fixed} bg-white`}>
       <DesktopNavbar />
       <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
