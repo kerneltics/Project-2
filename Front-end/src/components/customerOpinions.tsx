@@ -18,7 +18,6 @@ import customer5 from "/customerOpinionsImages/customers/customer5.png";
 // fake data
 const CustomersData = [
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -26,7 +25,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -34,15 +32,13 @@ const CustomersData = [
       '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."',
   },
   {
-    id: 3,
     photo: customer3,
     rate: 5,
     customerName: "حاتم",
     comment:
-      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول مذهلة، كانت تجربة فريدة ومميزة في عالم العقارات."',
+      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 4,
     photo: customer4,
     rate: 5,
     customerName: "خالد",
@@ -50,15 +46,13 @@ const CustomersData = [
       '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 5,
     photo: customer5,
     rate: 3,
     customerName: "سعد",
     comment:
-      '"كانت تجربتي مع اصول مذهلة جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
+      '"كانت تجربتي مع اصول جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
   },
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -66,7 +60,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -100,9 +93,9 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
 
 
 
-const customers= CustomersData.map((c)=>{
+const customers= CustomersData.map((c, index)=>{
   return(
-    <div className=" text-center ">
+    <div key={index} className=" text-center ">
       <div className=" pb-2">
         <h2 className=" font-medium py-2  text-2xl text-black">{c.customerName}</h2>
         <div className=" flex  justify-center  items-center">
@@ -156,7 +149,7 @@ export function CustomerOpinions() {
 
       {/* the opacity effect */}
       <div className=" -translate-y-12 h-[150px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
-    </div>
+      </div>
 
     <div className=" relative w-4/5 ">
     
@@ -167,6 +160,7 @@ export function CustomerOpinions() {
         focusOnSelect={true}
         autoplay={true}
         autoplaySpeed={4000}
+        arrows={false}
       >
       
         
@@ -190,6 +184,7 @@ export function CustomerOpinions() {
       <Slider 
         asNavFor={nav2}
         ref={(slider) => (sliderRef1.current = slider)}
+        arrows={false}
         className=" cursor-grab"
         >
         {customers}
