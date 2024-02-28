@@ -15,4 +15,4 @@ Osoul serves as a comprehensive platform for real estate enthusiasts, offering a
 
 **Frontend:** React, React router, Tailwind CSS, Vite, Email.Js, axios, Zod, framer Motion, Shadcn/ui, radix-ui, TypeScript, React Slick, clsx
 
-**Backend:** Laravel Api, Supabase
+**Backend:** Laravel Api, Supabase, Cloudinary
