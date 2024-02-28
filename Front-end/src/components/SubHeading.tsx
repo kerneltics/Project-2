@@ -7,5 +7,13 @@ interface SubHeadingProps extends React.HTMLAttributes<HTMLHeadElement> {
 }
 
 export const SubHeading = ({ className = "", ...props }: SubHeadingProps) => (
-  <h2 className={cn("text-[32px] font-bold", className)} {...props} />
+  <h2 className={cn("text-[32px] font-bold text-center", className)} {...props} />
+
+
+                        
+                
+                      
+
 );
+
+                      
