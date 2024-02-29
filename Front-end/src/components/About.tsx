@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div
       id="about-us"
-      className="mx-auto max-w-5xl space-y-8 rounded-md bg-white p-5 shadow-sm"
+      className="mx-auto max-w-5xl space-y-8 rounded-lg bg-white p-5 shadow-sm"
     >
       <SubHeading>من نحن وماذا نقدم </SubHeading>
 
