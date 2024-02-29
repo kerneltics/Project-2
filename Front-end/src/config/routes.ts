@@ -18,7 +18,7 @@ export const ROUTES = [
   },
   {
     label: "تصفح العقارات",
-    path: "/"
+    path: "/listings"
   }
 ] as const;
 
