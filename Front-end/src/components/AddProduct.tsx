@@ -197,13 +197,13 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
               onChange={handleFileChange}
             />
             <Button
-              className="h-12 w-full"
+              className="h-12 w-full rounded-xl"
               variant={selectedImage ? "default" : "secondary"}
             >
               اختيار صورة
             </Button>
           </div>
-          <div className="col-span-2 row-span-2 h-36 text-start">
+          <div className="col-span-2 row-span-2 mt-8 h-36 text-start">
             <textarea
               placeholder="الوصف..."
               rows={4}
