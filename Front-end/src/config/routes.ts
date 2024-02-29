@@ -1,3 +1,4 @@
+
 export const ROUTES = [
   {
     label: "الرئيسية",
@@ -20,3 +21,23 @@ export const ROUTES = [
     path: "/"
   }
 ] as const;
+
+
+export const ROUTES_Title = [
+  {
+    label: "الرئيسية",
+    path: "/",
+  },
+  {
+    label: "تصفح العقارات",
+    path: "listings",
+  },
+] as const;
+
+
+    const pathname = window.location.pathname;
+
+    export const ROUTES_RESULT = [
+      ROUTES_Title.map((rout) => `${rout.path}` === "/" && [rout.label]),
+      ROUTES_Title.map((rout) => `/${rout.path}` === pathname && [rout.label] )
+     ] as const;

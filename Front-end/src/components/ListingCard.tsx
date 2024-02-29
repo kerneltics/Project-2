@@ -46,16 +46,16 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
         </div>
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-1">
-            <Icons.bath />
-            <p className=" text-sm font-normal">{`${number_of_bathrooms} حمامات `}</p>
+            <Icons.bed />
+            <p className=" text-sm font-normal">{number_of_rooms} غرف</p>
           </div>
           <div className="flex items-center gap-1">
-            <Icons.bed />
-            <p className=" text-sm font-normal">{`${number_of_rooms} غرف `}</p>
+          <Icons.bath />
+            <p className=" text-sm font-normal">{number_of_bathrooms} حمامات</p>
           </div>
           <div className="flex items-center gap-1">
             <Icons.ruler />
-            <p className=" text-sm font-normal">{`${area} متر مربع `}</p>
+            <p className=" text-sm font-normal">{area} متر مربع</p>
           </div>
         </div>
         <div className="flex items-center">
