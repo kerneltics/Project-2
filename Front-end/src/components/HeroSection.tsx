@@ -2,7 +2,7 @@ import { Heading } from "@/components/Heading";
 
 export const HeroSection = () => {
   return (
-    <div className="h-[100dvh] bg-hero bg-cover bg-bottom bg-no-repeat">
+    <div className="h-[100dvh] bg-hero bg-bottom bg-no-repeat">
       <div className="container pt-8">
         <Heading className="text-center text-[20px] md:text-[40px]">
           استثمر في مستقبلك مع أفضل عروض العقارات في السعودية والخليج!
