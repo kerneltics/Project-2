@@ -173,6 +173,7 @@ export function CustomerOpinions() {
           asNavFor={nav2}
           ref={(slider) => (sliderRef1.current = slider)}
           className=" cursor-grab"
+          arrows={false}
         >
           {customers}
         </Slider>
