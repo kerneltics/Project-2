@@ -9,7 +9,7 @@ export const AdminLayout = () => {
   return (
     <div className="container">
       <Header />
-      <main className="flex-1">
+      <main className="mt-10 flex-1">
         <Outlet />
       </main>
     </div>
@@ -22,23 +22,28 @@ const Header = () => {
   const isLoggedIn = localStorage.getItem("token");
 
   return (
-    <header className="flex w-full items-center justify-between">
+    <header className="relative w-full">
       {isLoggedIn && pathname === "/admin" && (
-        <Button
-          variant="destructive"
-          onClick={() => {
-            localStorage.removeItem("token");
-            navigate("/login");
-            toast.success("تم تسجيل الخروج بنجاح");
-          }}
-        >
-          تسجيل الخروج
-        </Button>
+        <div className="absolute flex h-full items-center">
+          <Button
+            variant="destructive"
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/login");
+              toast.success("تم تسجيل الخروج بنجاح");
+            }}
+            className="text-sm md:text-base"
+          >
+            تسجيل الخروج
+          </Button>
+        </div>
       )}
 
-      <Link to="/" className="md:mx-auto">
-        <Icons.textLogo className="size-[80px] md:size-[120px]" />
-      </Link>
+      <div className="flex w-full items-center justify-end md:justify-center">
+        <Link to="/" className="md:mx-auto">
+          <Icons.textLogo className="size-[80px] md:size-[120px]" />
+        </Link>
+      </div>
     </header>
   );
 };

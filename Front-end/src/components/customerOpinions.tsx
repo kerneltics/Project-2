@@ -93,7 +93,7 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
 
 
 
-
+//* names rating and comments component
 const customers= CustomersData.map((c, index)=>{
   return(
     <div key={index} className=" text-center ">
@@ -169,44 +169,6 @@ export function CustomerOpinions() {
           <img src={customer5} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
         </div>
       </Slider>
-      <Slider 
-        asNavFor={nav2}
-        ref={(slider) => (sliderRef1.current = slider)}
-        arrows={false}
-        className=" cursor-grab"
-        >
-          <div>
-            {/* moved it a little so every image align with its comment */}
-            <img
-              src={customer1}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
-            ></img>
-          </div>
-          <div>
-            <img
-              src={customer2}
-              className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-[4rem]"
-            ></img>
-          </div>
-          <div>
-            <img
-              src={customer3}
-              className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
-            ></img>
-          </div>
-          <div>
-            <img
-              src={customer4}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
-            ></img>
-          </div>
-          <div>
-            <img
-              src={customer5}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
-            ></img>
-          </div>
-        </Slider>
         <Slider
           asNavFor={nav2}
           ref={(slider) => (sliderRef1.current = slider)}
