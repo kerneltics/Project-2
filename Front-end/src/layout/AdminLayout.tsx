@@ -1,8 +1,9 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import { Icons } from "@/config/icons";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export const AdminLayout = () => {
   return (
@@ -16,23 +17,23 @@ export const AdminLayout = () => {
 };
 
 const Header = () => {
-  // NOTE: This is temporary until we implement authentication.
+  const navigate = useNavigate();
   const { pathname } = useLocation();
-  const isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <header className="flex w-full items-center justify-between">
-      {isLoggedIn && pathname === "admin" ? (
-        <Button variant="secondary" onClick={() => {}}>
+      {isLoggedIn && pathname === "/admin" && (
+        <Button
+          variant="destructive"
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/login");
+            toast.success("تم تسجيل الخروج بنجاح");
+          }}
+        >
           تسجيل الخروج
         </Button>
-      ) : (
-        <Link
-          to={"/login"}
-          className={buttonVariants({ variant: "secondary" })}
-        >
-          الصفحة الرئيسية
-        </Link>
       )}
 
       <Link to="/" className="md:mx-auto">

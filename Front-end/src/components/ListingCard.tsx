@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Listing } from "@/schema";
 import { Link } from "react-router-dom";
 
@@ -28,7 +30,11 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
   return (
     <article className="flex min-w-[250px] max-w-[400px] flex-col rounded-3xl shadow-sm">
       <div className=" ">
-        <img src={image} className=" rounded-t-2xl object-cover aspect-[16/14]" />
+        <img
+          src={image}
+          className=" aspect-[16/14] rounded-t-2xl object-cover"
+          alt="Real Estate Image"
+        />
       </div>
       <div className="space-y-4  rounded-b-2xl bg-white p-5">
         <div className="flex items-center justify-between">
@@ -41,15 +47,15 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-1">
             <Icons.bath />
-            <p className=" text-sm font-normal">{number_of_bathrooms}</p>
+            <p className=" text-sm font-normal">{`${number_of_bathrooms} حمامات `}</p>
           </div>
           <div className="flex items-center gap-1">
             <Icons.bed />
-            <p className=" text-sm font-normal">{number_of_rooms}</p>
+            <p className=" text-sm font-normal">{`${number_of_rooms} غرف `}</p>
           </div>
           <div className="flex items-center gap-1">
             <Icons.ruler />
-            <p className=" text-sm font-normal">{area}</p>
+            <p className=" text-sm font-normal">{`${area} متر مربع `}</p>
           </div>
         </div>
         <div className="flex items-center">
@@ -60,9 +66,9 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
               <Link to={`listing/${id}`} className={cn(buttonVariants())}>
                 تفاصيل اكثر
               </Link>
-              <div className="flex items-center gap-1">
+              <div className="flex items-end gap-1">
                 <span className="text-[12px] text-foreground/80">SAR</span>
-                <p className=" font-medium">{price}</p>
+                <p className="text-2xl font-medium">{price}</p>
               </div>
             </div>
           )}

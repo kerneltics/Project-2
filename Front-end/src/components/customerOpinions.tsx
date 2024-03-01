@@ -18,7 +18,6 @@ import customer5 from "/customerOpinionsImages/customers/customer5.png";
 // fake data
 const CustomersData = [
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -26,7 +25,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -34,15 +32,13 @@ const CustomersData = [
       '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."',
   },
   {
-    id: 3,
     photo: customer3,
     rate: 5,
     customerName: "حاتم",
     comment:
-      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول مذهلة، كانت تجربة فريدة ومميزة في عالم العقارات."',
+      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 4,
     photo: customer4,
     rate: 5,
     customerName: "خالد",
@@ -50,15 +46,13 @@ const CustomersData = [
       '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 5,
     photo: customer5,
     rate: 3,
     customerName: "سعد",
     comment:
-      '"كانت تجربتي مع اصول مذهلة جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
+      '"كانت تجربتي مع اصول جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
   },
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -66,7 +60,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -100,39 +93,31 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
 
 
 
-const customers= CustomersData.map((c)=>{
-  return(
-    <div className=" text-center ">
-      <div className=" pb-2">
-        <h2 className=" font-medium py-2  text-2xl text-black">{c.customerName}</h2>
-        <div className=" flex  justify-center  items-center">
 
+const customers= CustomersData.map((c, index)=>{
+  return(
+    <div key={index} className=" text-center ">
+      <div className=" pb-2">
+        <h2 className=" py-2 text-2xl  font-medium text-black">
+          {c.customerName}
+        </h2>
+        <div className=" flex  items-center  justify-center">
           <Stars count={c.rate} />
           <EmptyStars count={5 - c.rate} />
         </div>
       </div>
 
-      <div>
-        
+      <div></div>
+      <div className=" relative h-36">
+        <Icons.beforeQuotation />
+        <p className="pt-5 text-xl text-[#3E3E3E]">{c.comment}</p>
+        <div className=" absolute bottom-0 right-1 ">
+          <Icons.afterQuotation />
+        </div>
       </div>
-      <div className=" h-36 relative">
-         <Icons.beforeQuotation />
-      <p className= 'pt-5 text-[#3E3E3E] text-xl'>
-        {c.comment}
-      </p>
-      <div className=" absolute right-1 bottom-0 ">
-        < Icons.afterQuotation />
-      </div>
-      
-      </div>
-     
-
     </div>
   );
 });
-
-
-
 
 export function CustomerOpinions() {
   const [nav1, setNav1] = useState<Slider | null>(null);
@@ -145,18 +130,14 @@ export function CustomerOpinions() {
     setNav2(sliderRef2.current);
   }, []);
 
-
-
-
   return (
-    <section className=" w-full flex justify-center flex-col items-center gap-8 space-y-8">
-      <SubHeading >
-        آراء العملاء
-      </SubHeading>
+    <section className="container flex w-full flex-col items-center justify-center gap-8 space-y-8">
+      <SubHeading>آراء العملاء</SubHeading>
 
       {/* the opacity effect */}
+
       <div className=" -translate-y-12 h-[150px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
-    </div>
+      </div>
 
     <div className=" relative w-4/5 ">
     
@@ -167,6 +148,7 @@ export function CustomerOpinions() {
         focusOnSelect={true}
         autoplay={true}
         autoplaySpeed={4000}
+        arrows={false}
       >
       
         
@@ -190,19 +172,62 @@ export function CustomerOpinions() {
       <Slider 
         asNavFor={nav2}
         ref={(slider) => (sliderRef1.current = slider)}
+        arrows={false}
         className=" cursor-grab"
         >
-        {customers}
-      </Slider>
+          <div>
+            {/* moved it a little so every image align with its comment */}
+            <img
+              src={customer1}
+              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer2}
+              className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-[4rem]"
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer3}
+              className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer4}
+              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer5}
+              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+            ></img>
+          </div>
+        </Slider>
+        <Slider
+          asNavFor={nav2}
+          ref={(slider) => (sliderRef1.current = slider)}
+          className=" cursor-grab"
+        >
+          {customers}
+        </Slider>
 
-      <button className="absolute -left-11 top-1/3 z-20" onClick={() => sliderRef2?.current?.slickPrev()}>
-        <Icons.blueArrowNext/>
-      </button>
-      <button className="  absolute -right-11 top-1/3 z-20" onClick={() => sliderRef2?.current?.slickNext()}>
-      <Icons.blueArrow/>
-      </button>
-
-    </div>
+        <button
+          className="absolute -left-11 top-1/3 z-20"
+          onClick={() => sliderRef2?.current?.slickPrev()}
+        >
+          <Icons.blueArrowNext />
+        </button>
+        <button
+          className="  absolute -right-11 top-1/3 z-20"
+          onClick={() => sliderRef2?.current?.slickNext()}
+        >
+          <Icons.blueArrow />
+        </button>
+      </div>
     </section>
   );
 }
