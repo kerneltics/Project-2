@@ -86,8 +86,8 @@ export const AdminPage = () => {
                 هل انت متأكد من حذف هذا العقار؟
               </AlertDialogTitle>
               <AlertDialogDescription className="text-right">
-                لا يمكن التراجع عن هذه الخطوة بعد الضغط على موافق. سيتم حذف
-                العقار هل انت متأكد؟
+                لا يمكن التراجع عن هذه الخطوة، بعد الضغط على حذف سيتم إزالة
+                العقار. <br /> هل انت متأكد؟
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="!mt-3 !flex !w-full !items-center !justify-start">
