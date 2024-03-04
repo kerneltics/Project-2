@@ -25,7 +25,7 @@ function Form() {
   // A state to check if the form is submited
 
   return (
-    <div className="mx-auto w-10/12 py-24">
+    <div className="mx-auto w-10/12 py-14 md:py-24">
       <FormTitle />
       <TheForm />
     </div>
