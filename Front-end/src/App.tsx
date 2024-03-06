@@ -19,10 +19,10 @@ const App = () => {
         <Route path="listing/:listingId" element={<ListingDetailsPage />} />
       </Route>
       {/* path="listing/:listingId" */}
-      <Route path="admin" element={<AdminLayout />}>
+      <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminPage />} />
       </Route>
-      <Route path="login" element={<AdminLayout />}>
+      <Route path="/login" element={<AdminLayout />}>
         <Route index element={<LoginPage />} />
       </Route>
     </Routes>

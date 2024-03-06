@@ -138,7 +138,7 @@ export function CustomerOpinions() {
 
       <div className=" relative w-4/5 ">
         <Slider
-          asNavFor={nav1}
+          asNavFor={nav1!}
           ref={(slider) => (sliderRef2.current = slider)}
           slidesToShow={5}
           focusOnSelect={true}
@@ -179,7 +179,7 @@ export function CustomerOpinions() {
           </div>
         </Slider>
         <Slider
-          asNavFor={nav2}
+          asNavFor={nav2!}
           ref={(slider) => (sliderRef1.current = slider)}
           className=" cursor-grab"
           arrows={false}
