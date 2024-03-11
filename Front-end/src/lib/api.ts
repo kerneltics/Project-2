@@ -4,7 +4,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 type ListingEndpoints =
   | `/listing/${number}`
-  | `/listings/?page=${number}`
+  | `/listings?page=${number}`
   | "/featured-listing";
 
 type CreateListingEndpoint = "/create-listing";
