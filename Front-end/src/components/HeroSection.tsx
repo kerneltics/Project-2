@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { Heading } from "@/components/Heading";
 
 export const HeroSection = () => {
@@ -12,6 +14,12 @@ export const HeroSection = () => {
           بتقديم خدمات عقارية متميزة تلبي احتياجات جميع عملائنا بكفاءة
           واحترافية.
         </p>
+        <Link
+          to={`/listings`}
+          className="m-auto block w-[130px] rounded-md border border-primary bg-primary p-2 text-center font-bold text-white transition-colors hover:bg-primary-foreground hover:text-primary"
+        >
+          تصفح العقارات
+        </Link>
       </div>
     </div>
   );

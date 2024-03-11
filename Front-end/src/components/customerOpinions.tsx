@@ -91,11 +91,9 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
   </div>
 );
 
-
-
 //* names rating and comments component
-const customers= CustomersData.map((c, index)=>{
-  return(
+const customers = CustomersData.map((c, index) => {
+  return (
     <div key={index} className=" text-center ">
       <div className=" pb-2">
         <h2 className=" py-2 text-2xl  font-medium text-black">
@@ -136,41 +134,52 @@ export function CustomerOpinions() {
 
       {/* the opacity effect */}
 
-      <div className=" -translate-y-12 h-[150px] w-full bg-gradient-to-r from-background via-[#fff0] z-10 to-background absolute ">
-      </div>
+      <div className=" absolute z-10 h-[150px] w-full -translate-y-12 bg-gradient-to-r from-background via-[#fff0] to-background "></div>
 
-    <div className=" relative w-4/5 ">
-    
-      <Slider
-        asNavFor={nav1}
-        ref={(slider) => (sliderRef2.current = slider)}
-        slidesToShow={5}
-        focusOnSelect={true}
-        autoplay={true}
-        autoplaySpeed={4000}
-        arrows={false}
-      >
-      
-        
-        <div>
-         {/* moved it a little so every image align with its comment */}
-          <img src={customer1} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
-        </div>
-        <div>
-          <img src={customer2}  className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-[4rem]"></img>
-        </div>
-        <div>
-          <img src={customer3} className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
-        </div>
-        <div>
-          <img src={customer4} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
-        </div>
-        <div>
-          <img src={customer5} className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"></img>
-        </div>
-      </Slider>
+      <div className=" relative w-4/5 ">
         <Slider
-          asNavFor={nav2}
+          asNavFor={nav1!}
+          ref={(slider) => (sliderRef2.current = slider)}
+          slidesToShow={5}
+          focusOnSelect={true}
+          autoplay={true}
+          autoplaySpeed={4000}
+          arrows={false}
+        >
+          <div>
+            {/* moved it a little so every image align with its comment */}
+            <img
+              src={customer1}
+              className=" sm:pl-2  md:pl-5 lg:pl-11 xl:pl-[4rem]  min-[1800px]:pl-24 "
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer2}
+              className=" sm:pl-2  md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer3}
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer4}
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
+            ></img>
+          </div>
+          <div>
+            <img
+              src={customer5}
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24  "
+            ></img>
+          </div>
+        </Slider>
+        <Slider
+          asNavFor={nav2!}
           ref={(slider) => (sliderRef1.current = slider)}
           className=" cursor-grab"
           arrows={false}

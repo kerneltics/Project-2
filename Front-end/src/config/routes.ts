@@ -15,10 +15,6 @@ export const ROUTES = [
   {
     label: "أفضل العقارات",
     path: "#best-real-estate",
-  },
-  {
-    label: "تصفح العقارات",
-    path: "/listings"
   }
 ] as const;
 
@@ -29,7 +25,7 @@ export const ROUTES_Title = [
     path: "/",
   },
   {
-    label: "تصفح العقارات",
+    label: "تصفح العقارات"  ,
     path: "listings",
   },
 ] as const;
