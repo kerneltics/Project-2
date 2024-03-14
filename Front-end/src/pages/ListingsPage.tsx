@@ -259,7 +259,7 @@ export const ListingsPage = () => {
       </div>
 
       <div className="flex flex-col items-center space-y-8">
-        <div className="mx-auto my-20 grid w-10/12 grid-cols-3 grid-rows-2 items-center justify-center gap-y-12">
+        <div className="mx-auto my-20 flex w-10/12 flex-wrap items-center justify-center gap-x-5 gap-y-12">
           {listings.map((listing: Listing) =>
             filter ? (
               listing.city.name.includes(form.getValues().location) &&
@@ -307,7 +307,7 @@ export const ListingsPage = () => {
         {[1, 2].map((pageNumber) => (
           <button
             key={pageNumber}
-            className="join-item btn btn-md"
+            className="btn join-item btn-md"
             onClick={() => handlePageClick(pageNumber)}
           >
             {pageNumber}
