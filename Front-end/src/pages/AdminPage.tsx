@@ -138,7 +138,7 @@ export const AdminPage = () => {
         <div className="flex flex-col items-center space-y-8">
           <SubHeading> العقارات</SubHeading>
 
-          <div className="grid grid-cols-3 grid-rows-2 gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             {listings.map((listing: Listing) => (
               <div key={listing.id}>
                 <ListingCard listing={listing} render={render} />
@@ -150,7 +150,7 @@ export const AdminPage = () => {
           {[1, 2].map((pageNumber) => (
             <button
               key={pageNumber}
-              className="join-item btn btn-md"
+              className="btn join-item btn-md"
               onClick={() => handlePageClick(pageNumber)}
             >
               {pageNumber}

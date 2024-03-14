@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { useFeaturedListings } from "@/hooks/use-featured-listings";
 
 import { ListingCard, ListingCardsSkeleton } from "@/components/ListingCard";
@@ -16,7 +18,10 @@ export const FeaturedListings = () => {
   }
   console.log({ data: listings });
   return (
-    <div id="best-real-estate" className="container flex flex-col items-center space-y-8">
+    <div
+      id="best-real-estate"
+      className="container flex flex-col items-center space-y-8"
+    >
       <SubHeading>أفضل العقارات</SubHeading>
 
       <div className="flex flex-wrap items-center justify-center gap-6">
@@ -24,6 +29,12 @@ export const FeaturedListings = () => {
           <ListingCard listing={listing} />
         ))}
       </div>
+      <Link
+        to={`/listings`}
+        className="m-auto block w-[170px] rounded-md border border-primary bg-primary p-2 text-center font-bold text-white transition-colors hover:bg-primary-foreground hover:text-primary"
+      >
+        تصفح جميع العقارات
+      </Link>
     </div>
   );
 };
