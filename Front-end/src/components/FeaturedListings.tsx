@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 
 import { useFeaturedListings } from "@/hooks/use-featured-listings";
 
-import { ListingCard, ListingCardsSkeleton } from "@/components/ListingCard";
+import {
+  FeaturedListingsSkeleton,
+  ListingCard,
+} from "@/components/ListingCard";
 import { SubHeading } from "@/components/SubHeading";
 
 export const FeaturedListings = () => {
   const { data: listings, isLoading, isError, error } = useFeaturedListings();
 
   if (isLoading) {
-    return <ListingCardsSkeleton />;
+    return <FeaturedListingsSkeleton />;
   }
 
   if (isError || !listings) {
