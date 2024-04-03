@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -10,18 +10,12 @@ const linksAnimation =
 
 export const Header = () => {
   const [top, setTop] = useState("-365px");
-  const [fixed, setFixed] = useState("");
   const openNavbar = () => {
     setTop("15px");
   };
   const closeNavbar = () => setTop("-365px");
-  useEffect(() => {
-    window.onscroll = () => {
-      window.scrollY > 20 ? setFixed("fixed") : setFixed(" ");
-    };
-  }, []);
   return (
-    <header className={`z-50 w-[100%] ${fixed} bg-white`}>
+    <header className="sticky top-0 z-50 w-[100%]  bg-white">
       <DesktopNavbar />
       <MobileNavbar top={top} open={openNavbar} close={closeNavbar} />
     </header>
