@@ -15,8 +15,8 @@ export const HeroSection = () => {
           واحترافية.
         </p>
         <Link
-          className="m-auto block w-[130px] rounded-lg bg-primary py-3 text-center text-[16px] font-bold text-white"
-          to="/"
+          to={`/listings`}
+          className="m-auto block w-[130px] rounded-md border border-primary bg-primary p-2 text-center font-bold text-white transition-colors hover:bg-primary-foreground hover:text-primary"
         >
           تصفح العقارات
         </Link>

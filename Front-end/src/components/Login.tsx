@@ -11,6 +11,8 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button.tsx";
 import { ErrorMessage } from "@/components/ui/ErrorMessage.tsx";
 
+import loginPageImage from "/images/loginPageImage.jpg";
+
 const loginSchema = z.object({
   userName: z
     .string()
@@ -56,6 +58,7 @@ function Login() {
     } catch (error) {
       setIsSubmited(false);
       toast.error("خطأ في اسم المستخدم أو الرقم السري");
+      console.error(error);
     }
   });
 
@@ -100,7 +103,7 @@ function Login() {
       </div>
       <div className="order-1 w-full p-4 md:order-2 md:w-1/2">
         <img
-          src="../../public/images/loginPageImage.jpg"
+          src={loginPageImage}
           alt="login page"
           className="h-full w-full rounded-2xl object-cover shadow-xl"
         />

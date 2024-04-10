@@ -18,7 +18,6 @@ import customer5 from "/customerOpinionsImages/customers/customer5.png";
 // fake data
 const CustomersData = [
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -26,7 +25,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -34,15 +32,13 @@ const CustomersData = [
       '"لا يمكنني سوى التأكيد على روعة تعامل اصول، كانوا مصدر ثقة ومساعدة في كل مرحلة من مراحل العملية."',
   },
   {
-    id: 3,
     photo: customer3,
     rate: 5,
     customerName: "حاتم",
     comment:
-      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول مذهلة، كانت تجربة فريدة ومميزة في عالم العقارات."',
+      '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 4,
     photo: customer4,
     rate: 5,
     customerName: "خالد",
@@ -50,15 +46,13 @@ const CustomersData = [
       '"لا يمكنني سوى التعبير عن إعجابي بكفاءة واحترافية اصول، كانت تجربة فريدة ومميزة في عالم العقارات."',
   },
   {
-    id: 5,
     photo: customer5,
     rate: 3,
     customerName: "سعد",
     comment:
-      '"كانت تجربتي مع اصول مذهلة جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
+      '"كانت تجربتي مع اصول جيدة بشكل عام، لكن كان هناك بعض اللحظات التي شعرت فيها ببعض الارتباك في التواصل والتنسيق."',
   },
   {
-    id: 1,
     photo: customer1,
     rate: 5,
     customerName: "عبدالله",
@@ -66,7 +60,6 @@ const CustomersData = [
       '"كانت تجربتي مع اصول مذهلة بكل معنى الكلمة. لقد قدموا لي الدعم والمشورة في كل خطوة من خطوات عملية شراء العقار."',
   },
   {
-    id: 2,
     photo: customer2,
     rate: 4,
     customerName: "احمد",
@@ -98,9 +91,10 @@ const EmptyStars: React.FC<StarsProps> = ({ count }) => (
   </div>
 );
 
-const customers = CustomersData.map((c, i) => {
+//* names rating and comments component
+const customers = CustomersData.map((c, index) => {
   return (
-    <div key={i} className=" text-center ">
+    <div key={index} className=" text-center ">
       <div className=" pb-2">
         <h2 className=" py-2 text-2xl  font-medium text-black">
           {c.customerName}
@@ -139,53 +133,56 @@ export function CustomerOpinions() {
       <SubHeading>آراء العملاء</SubHeading>
 
       {/* the opacity effect */}
+
       <div className=" absolute z-10 h-[150px] w-full -translate-y-12 bg-gradient-to-r from-background via-[#fff0] to-background "></div>
 
       <div className=" relative w-4/5 ">
         <Slider
-          asNavFor={nav1}
+          asNavFor={nav1!}
           ref={(slider) => (sliderRef2.current = slider)}
           slidesToShow={5}
           focusOnSelect={true}
           autoplay={true}
           autoplaySpeed={4000}
+          arrows={false}
         >
           <div>
             {/* moved it a little so every image align with its comment */}
             <img
               src={customer1}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+              className=" sm:pl-2  md:pl-5 lg:pl-11 xl:pl-[4rem]  min-[1800px]:pl-24 "
             ></img>
           </div>
           <div>
             <img
               src={customer2}
-              className="  md:translate-x-8 lg:translate-x-11  xl:translate-x-[4rem]"
+              className=" sm:pl-2  md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
             ></img>
           </div>
           <div>
             <img
               src={customer3}
-              className=" md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
             ></img>
           </div>
           <div>
             <img
               src={customer4}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24 "
             ></img>
           </div>
           <div>
             <img
               src={customer5}
-              className="  md:translate-x-8 lg:translate-x-11 xl:translate-x-[4rem]"
+              className=" sm:pl-2 md:pl-5 lg:pl-11 xl:pl-[4rem] min-[1800px]:pl-24  "
             ></img>
           </div>
         </Slider>
         <Slider
-          asNavFor={nav2}
+          asNavFor={nav2!}
           ref={(slider) => (sliderRef1.current = slider)}
           className=" cursor-grab"
+          arrows={false}
         >
           {customers}
         </Slider>

@@ -45,13 +45,13 @@ export function OneReal({ listing }: OneRealProps) {
               <div className="my-6 flex flex-col">
                 <div className="">
                   <p className=" flex flex-row">
-                    <Icons.ruler className="mx-2" /> {area}
+                    <Icons.ruler className="mx-2" /> {area} متر مربع
                   </p>
                   <p className=" flex flex-row">
-                    <Icons.bath className="mx-2" /> {number_of_bathrooms}
+                    <Icons.bath className="mx-2" /> {number_of_bathrooms} حمامات
                   </p>
                   <p className=" flex flex-row">
-                    <Icons.bed className="mx-2 my-1" /> {number_of_rooms}
+                    <Icons.bed className="mx-2 my-1" /> {number_of_rooms} غرف
                   </p>
                 </div>
                 <div className="mb-2 flex flex-row  justify-end text-2xl font-medium">
