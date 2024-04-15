@@ -38,7 +38,7 @@ const DesktopNavbar = () => (
     </ul>
     <a
       className="rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all duration-400 ease-out hover:bg-primary hover:text-white"
-      href="#contact-us"
+      href="/#contact-us"
     >
       تواصل معنا
     </a>
@@ -108,7 +108,7 @@ const MobileNavbar = ({ top, close, open }: MobileNavbarProps) => (
           <div className="my-6">
             <a
               className="duration-[400ms] w-full rounded-md border border-primary px-[28px] py-[10px] text-primary transition-all ease-out hover:bg-primary hover:text-white"
-              href="#contact-us"
+              href="/#contact-us"
             >
               تواصل معنا
             </a>

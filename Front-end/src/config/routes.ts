@@ -1,4 +1,3 @@
-
 export const ROUTES = [
   {
     label: "الرئيسية",
@@ -6,18 +5,17 @@ export const ROUTES = [
   },
   {
     label: "من نحن",
-    path: "#about-us",
+    path: "/#about-us",
   },
   {
     label: "خدماتنا",
-    path: "#our-services",
+    path: "/#our-services",
   },
   {
     label: "أفضل العقارات",
-    path: "#best-real-estate",
-  }
+    path: "/#best-real-estate",
+  },
 ] as const;
-
 
 export const ROUTES_Title = [
   {
@@ -25,15 +23,14 @@ export const ROUTES_Title = [
     path: "/",
   },
   {
-    label: "تصفح العقارات"  ,
+    label: "تصفح العقارات",
     path: "listings",
   },
 ] as const;
 
+const pathname = window.location.pathname;
 
-    const pathname = window.location.pathname;
-
-    export const ROUTES_RESULT = [
-      ROUTES_Title.map((rout) => `${rout.path}` === "/" && [rout.label]),
-      ROUTES_Title.map((rout) => `/${rout.path}` === pathname && [rout.label] )
-     ] as const;
+export const ROUTES_RESULT = [
+  ROUTES_Title.map((rout) => `${rout.path}` === "/" && [rout.label]),
+  ROUTES_Title.map((rout) => `/${rout.path}` === pathname && [rout.label]),
+] as const;

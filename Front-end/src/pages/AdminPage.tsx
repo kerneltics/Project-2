@@ -61,9 +61,19 @@ export const AdminPage = () => {
     return <Loader className=" mx-auto size-12 min-h-[70dvh] animate-spin " />;
   }
 
-  if (isError || !listings) {
-    // TODO: ⛔ Implement error handling ⛔
+  if (isError && listings !== undefined) {
     return <pre dir="ltr">{JSON.stringify(error, null, 2)}</pre>;
+  }
+
+  if (!listings || listings.length === 0) {
+    return (
+      <div className="text-center">
+        <AddProduct />
+        <div className="mx-auto flex h-[75dvh] w-11/12 items-center justify-center">
+          <p>لا توجد عقارات متاحة</p>
+        </div>{" "}
+      </div>
+    );
   }
 
   const handlePageClick = (pageNumber: number) => {
