@@ -56,6 +56,11 @@ interface Listing {
   };
 }
 
+interface City {
+  id: Key | null | undefined;
+  name: string;
+}
+
 const formSchema = z.object({
   location: z.string().min(1),
   property: z.string().min(1),
@@ -94,11 +99,14 @@ export const ListingsPage = () => {
     return <pre dir="ltr">{JSON.stringify(error, null, 2)}</pre>;
   }
   // console.log({ data: listings });
-  const originalArray = listings.map((type: { name: never }) => type.name);
 
-  const uniqueArray = [...new Set(originalArray)];
+const originalArray = listings.map((location: { city: { id: Key | null | undefined; name: string; }; }) => location.city);
 
-  console.log(uniqueArray);
+const uniqueArrayCity = originalArray.filter((obj: City, index: number, self: City[]) =>
+  index === self.findIndex((t: City) => (
+    t.name === obj.name && t.id === obj.id
+  ))
+);
 
   const onSubmit = (data: ProductFormValues) => {
     try {
@@ -170,6 +178,19 @@ export const ListingsPage = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
+                          {uniqueArrayCity.map(
+                            (location: City) => (
+                              <SelectItem
+                                key={location.id}
+                                value={location.name}
+                              >
+                                {location.name}
+                              </SelectItem>
+                            ),
+                          )}
+                        </SelectContent>
+
+                        {/* <SelectContent>
                           {listings.map(
                             (location: {
                               city: {
@@ -185,7 +206,7 @@ export const ListingsPage = () => {
                               </SelectItem>
                             ),
                           )}
-                        </SelectContent>
+                        </SelectContent> */}
                       </Select>
                       <FormMessage />
                     </FormItem>
