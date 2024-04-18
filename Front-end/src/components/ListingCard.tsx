@@ -80,7 +80,20 @@ export const ListingCard = ({ listing, render }: ListingCardProps) => {
 
 export const ListingCardsSkeleton = () => {
   return (
-    <div className="container mt-32 flex flex-wrap items-center gap-4">
+    <div className="container flex flex-col items-center justify-center py-20">
+      <Skeleton className="mx-auto h-24 w-full" />
+      <div className="container mt-20 flex flex-wrap items-center justify-center gap-4">
+        <Skeleton className="size-[300px] md:size-[400px]" />
+        <Skeleton className="size-[300px] md:size-[400px]" />
+        <Skeleton className="size-[300px] md:size-[400px]" />
+      </div>
+    </div>
+  );
+};
+
+export const FeaturedListingsSkeleton = () => {
+  return (
+    <div className="container mt-20 flex flex-wrap items-center justify-center gap-4">
       <Skeleton className="size-[300px] md:size-[400px]" />
       <Skeleton className="size-[300px] md:size-[400px]" />
       <Skeleton className="size-[300px] md:size-[400px]" />

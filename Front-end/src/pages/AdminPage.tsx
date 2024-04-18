@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 import { Icons } from "@/config/icons";
 
-import { useFeaturedListings } from "@/hooks/use-featured-listings";
+import { GetAllListing } from "@/hooks/getAllListing.ts";
 
 import AddProduct from "@/components/AddProduct.tsx";
 import { ListingCard } from "@/components/ListingCard";
@@ -25,8 +25,35 @@ import {
 } from "@/components/ui/alert-dialog";
 import Spinner from "@/components/ui/Spinner.tsx";
 
+interface Listing {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  price: string;
+  number_of_rooms: number;
+  number_of_bathrooms: number;
+  area: string;
+  city_id: number;
+  user_id: number;
+  created_at: string;
+  updated_at: string;
+  city: {
+    id: number;
+    name: string;
+    created_at: string | null;
+    updated_at: string | null;
+  };
+}
+
 export const AdminPage = () => {
-  const { data: listings, isLoading, isError, error } = useFeaturedListings();
+  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    data: listings,
+    isLoading,
+    isError,
+    error,
+  } = GetAllListing(currentPage);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [clickedID, setClickedID] = useState<number | null>(null);
 
@@ -34,10 +61,24 @@ export const AdminPage = () => {
     return <Loader className=" mx-auto size-12 min-h-[70dvh] animate-spin " />;
   }
 
-  if (isError || !listings) {
-    // TODO: ⛔ Implement error handling ⛔
+  if (isError && listings !== undefined) {
     return <pre dir="ltr">{JSON.stringify(error, null, 2)}</pre>;
   }
+
+  if (!listings || listings.length === 0) {
+    return (
+      <div className="text-center">
+        <AddProduct />
+        <div className="mx-auto flex h-[75dvh] w-11/12 items-center justify-center">
+          <p>لا توجد عقارات متاحة</p>
+        </div>{" "}
+      </div>
+    );
+  }
+
+  const handlePageClick = (pageNumber: number) => {
+    setCurrentPage(pageNumber); // Update the current page state
+  };
 
   const render = (id: number) => {
     const handleDelete = async () => {
@@ -108,10 +149,23 @@ export const AdminPage = () => {
           <SubHeading> العقارات</SubHeading>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            {listings.map((listing) => (
-              <ListingCard listing={listing} render={render} />
+            {listings.map((listing: Listing) => (
+              <div key={listing.id}>
+                <ListingCard listing={listing} render={render} />
+              </div>
             ))}
           </div>
+        </div>
+        <div className="join mt-7 flex w-full items-center justify-center">
+          {[1, 2].map((pageNumber) => (
+            <button
+              key={pageNumber}
+              className="btn join-item btn-md"
+              onClick={() => handlePageClick(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          ))}
         </div>
       </ProtectedRoute>
     </div>
