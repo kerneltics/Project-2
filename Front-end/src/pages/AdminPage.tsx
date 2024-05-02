@@ -86,7 +86,7 @@ export const AdminPage = () => {
       setClickedID(id);
       try {
         const res = await axios.delete(
-          `https://www.kerneltics.com/api/delete-listing/${id}`,
+          `https://www.kerneltics.com/Osol_public/api/delete-listing/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
