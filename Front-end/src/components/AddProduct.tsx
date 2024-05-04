@@ -74,7 +74,7 @@ function Popup({ setIsOpen }: { setIsOpen: (value: boolean) => void }) {
       formData.append("description", data.description);
 
       const response = await axios.post(
-        "https://www.kerneltics.com/api/create-listing",
+        "https://www.kerneltics.com/Osol_public/api/create-listing",
         formData,
         {
           headers: {

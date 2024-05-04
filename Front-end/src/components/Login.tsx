@@ -43,10 +43,13 @@ function Login() {
     setIsSubmited(true);
 
     try {
-      const res = await axios.post("https://www.kerneltics.com/api/login", {
-        email: data.userName,
-        password: data.password,
-      });
+      const res = await axios.post(
+        "https://www.kerneltics.com/Osol_public/api/login",
+        {
+          email: data.userName,
+          password: data.password,
+        },
+      );
 
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
